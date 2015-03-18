@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" 
+  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<!-- 1. Load platform support before any code that touches the DOM. -->
+		<script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="../app.css">
+		<link rel="import" href="../elements.html">
+		<link rel="import" href="../elements/review-list.html">
+
+	</head>
+<body fullbleed layout vertical unresolved>
+	<template is="auto-binding">
+		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
+			<core-header-panel drawer mode="scroll">
+				<core-toolbar id="navheader" class="tall coverimg">
+					<div class="bottom" layout vertical>
+						<span>{{user.name}}</span>
+						<span>{{user.email}}</span>
+					</div>
+				</core-toolbar>
+				<core-menu selected="0">
+					<a href="registerMerchant.html" target="_self">
+				    	<core-item icon="add-box" label="Register Merchant"><a href="#settings" target="_self"></a></core-item>
+			    	</a>
+    				<core-item icon="maps:rate-review" label="My Reviews"><a href="#account" target="_self"></a></core-item>
+    				<core-submenu icon="maps:local-restaurant" label="Restaurants">
+						<a href="merchantReview.html" target="_self">
+							<core-item icon="hardware:keyboard-arrow-right" label="Lous Cafe "></core-item>
+						</a>
+					    <core-item icon="hardware:keyboard-arrow-right" label="Off the Grid"></core-item>
+					    <core-item icon="hardware:keyboard-arrow-right" label="B Patisserie "></core-item>
+					    <core-item icon="hardware:keyboard-arrow-right" label="Foodie Adventures"></core-item>
+					    <core-item icon="hardware:keyboard-arrow-right" label="Sakoon"></core-item>
+					</core-submenu>
+				</core-menu>
+			</core-header-panel>
+			<core-header-panel main>
+				<core-toolbar id="mainheader" class="tall animate">
+					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
+					<div flex></div>
+					<span class="bottom indent title">ADAM Reviews</span>
+					<paper-dropdown-menu label="Restaurants" class="right restaurants">
+						<paper-dropdown class="dropdown">
+						 	<core-menu class="menu">
+			                    <paper-item label="LousCafe">Lous Cafe </paper-item>
+			                    <paper-item label="OffTheGrid">Off the Grid: Picnic At the Presidio </paper-item>
+			                    <paper-item label="BPatisserie">B Patisserie </paper-item>
+			                    <paper-item label="FoodieAdventures">Foodie Adventures </paper-item>
+			                    <paper-item label="Sakoon">Sakoon</paper-item>
+		                    </core-menu>
+		                </paper-dropdown>
+	                </paper-dropdown-menu>
+					<paper-icon-button icon="search" role="button"></paper-icon-button>
+					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}"></google-signin>
+				</core-toolbar>
+				<div class="content container" layout vertical left>
+					<h2>Merchant Registration</h2>
+					<div class="separator"><i>Please enter the business details in the fields below:</i></div>
+					<core-field center horizontal layout>
+					    <label class="label">Restaurant Name</label>
+					    <input class="register" required id="restaurantName" />
+				  	</core-field>
+				  	<core-field center horizontal layout>
+					    <label class="label">Street</label>
+					    <input class="register" required id="street" />
+				  	</core-field>
+				  	<core-field center horizontal layout>
+					    <label class="label">City</label>
+					    <input class="register" required id="city"/>
+				  	</core-field>
+				  	<core-field center horizontal layout>
+					    <label class="label">State</label>
+					    <input class="register" required id="state"/>
+				  	</core-field>
+				  	<core-field center horizontal layout>
+					    <label class="label">Country</label>
+					    <input class="register" required id="country" />
+				  	</core-field>
+				  	<core-field center horizontal layout>
+					    <label class="label">Pincode</label>
+					    <input class="register" required id="pincode" />
+				  	</core-field>
+				  	<core-field center horizontal layout>
+					    <label class="label">Contact</label>
+					    <input class="register" required id="contact" placeholder="999-999-9999" maxlength="12" value="" />
+				  	</core-field>
+				  	<paper-button raised role="button" onclick="registerMerchant();document.querySelector('#toast1').show()">Register</paper-button>
+					<paper-toast id="toast1" class="capsule" text="Merchant Details Added Succesfully!!!" style="padding-right: 60px;"></paper-toast>
+				</div>
+			</core-header-panel>
+		</core-drawer-panel>
+		</template>
+		<script src="../app.js"></script>
+		<script type="text/javascript">
+			function registerMerchant()
+			{
+				var dataJson = {};
+				var registeredElements = document.querySelectorAll('.register');
+				for (i = 0; i < registeredElements.length; ++i) {
+					dataJson[registeredElements[i].id] = registeredElements[i].value;
+				}
+				console.log(JSON.stringify(dataJson));
+				var jsonData = JSON.stringify(dataJson);
+				$.ajax({
+				  method: "POST",
+				  url: "http://localhost:3000/restaurants",
+				  data: JSON.stringify(dataJson),
+				  contentType: "application/json; charset=utf-8",
+				  dataType: "json"
+				}).done(function( msg ) {
+				    console.log( "Data Saved: " + msg );
+				  });
+			}
+
+		</script>
+	</body>
+</html>

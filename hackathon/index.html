@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" 
+  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<!-- 1. Load platform support before any code that touches the DOM. -->
+		<script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+		<link rel="stylesheet" href="app.css">
+		<link rel="import" href="elements.html">
+		<link rel="import" href="elements/restaurant-list.html">
+
+	</head>
+<body fullbleed layout vertical unresolved>
+
+	<template is="auto-binding">
+		<section >
+			<paper-fab class="writeReview bottom" icon="create" on-tap="{{ newReview }}" role="button"  tabindex="0" aria-label="launch" title="Write a review"></paper-fab>
+	        <paper-action-dialog backdrop class="reviewDialog" layered="false">
+	       		<h1>Lous Cafe</h1>
+	       		<span>San Francisco, CA 94101</span>
+	       		<div class="separator"></div>
+	        	<div>
+			      <span>Rating</span>
+			      <paper-slider id="ratings" pin snaps max="5" step="1" value="5" editable></paper-slider>
+			    </div>
+			    
+	        	<paper-input-decorator label="Comments" floatingLabel>
+			      <paper-autogrow-textarea>
+			        <textarea></textarea>
+			      </paper-autogrow-textarea>
+			    </paper-input-decorator>
+				<paper-button class="bottom" affirmative autofocus onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
+				<paper-button class="bottom" affirmative autofocus onclick="document.querySelector('#toast2').show()">Submit</paper-button>
+	    	</paper-action-dialog>
+		</section>
+		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
+			<core-header-panel drawer mode="scroll">
+				<core-toolbar id="navheader" class="tall animate">
+					<div class="bottom" layout vertical>
+						<span>{{user.name}}</span>
+						<span>{{user.email}}</span>
+					</div>
+				</core-toolbar>
+				<core-menu selected="0">
+				    <a href="pages/registerMerchant.html" target="_self">
+				    	<core-item icon="add-box" label="Register Merchant"><a href="#settings" target="_self"></a></core-item>
+			    	</a>
+    				<core-item icon="maps:rate-review" label="My Reviews"><a href="#account" target="_self"></a></core-item>
+    				<core-submenu icon="maps:local-restaurant" label="Restaurants">
+						<a href="pages/merchantReview.html" target="_self">
+							<core-item icon="hardware:keyboard-arrow-right" label="Lous Cafe "></core-item>
+						</a>
+					    <core-item icon="hardware:keyboard-arrow-right" label="Off the Grid"></core-item>
+					    <core-item icon="hardware:keyboard-arrow-right" label="B Patisserie "></core-item>
+					    <core-item icon="hardware:keyboard-arrow-right" label="Foodie Adventures"></core-item>
+					    <core-item icon="hardware:keyboard-arrow-right" label="Sakoon"></core-item>
+					</core-submenu>
+				</core-menu>
+			</core-header-panel>
+			<core-header-panel main>
+				<core-toolbar id="mainheader" class="tall animate">
+					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
+					<div flex></div>
+					<span class="bottom indent title">ADAM Reviews</span>
+					<paper-dropdown-menu label="Restaurants" class="right restaurants">
+						<paper-dropdown class="dropdown">
+						 	<core-menu class="menu">
+			                    <paper-item label="LousCafe">Lous Cafe </paper-item>
+			                    <paper-item label="OffTheGrid">Off the Grid: Picnic At the Presidio </paper-item>
+			                    <paper-item label="BPatisserie">B Patisserie </paper-item>
+			                    <paper-item label="FoodieAdventures">Foodie Adventures </paper-item>
+			                    <paper-item label="Sakoon">Sakoon</paper-item>
+		                    </core-menu>
+		                </paper-dropdown>
+	                </paper-dropdown-menu>
+					<paper-icon-button icon="search" role="button"></paper-icon-button>
+					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}"></google-signin>
+				</core-toolbar>
+				<div class="content container" vertical >
+					<restaurant-list show="all" ></restaurant-list>
+				</div>
+			</core-header-panel>
+		</core-drawer-panel>
+		<script src="app.js"></script>
+	</body>
+</html>

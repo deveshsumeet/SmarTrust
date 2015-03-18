@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Lous Cafe", 
+    "rating": 1,
+    "revCount": 524,
+    "review": "not sure what dutch crunch is but i know it's delicious",
+    "resAvatar" : "images/res1.jpg",
+    "avatar" : "images/avatar-01.svg"
+  },
+  {
+    "name": "Off the Grid: Picnic At the Presidio", 
+    "rating": 5,
+    "revCount": 675,
+    "review": "Bring a blanket, bring your kids, your pets, a frisbee, some games.",
+    "resAvatar" : "images/res2.jpg",
+    "avatar" : "images/avatar-02.svg"
+  },
+  {
+    "name": "B Patisserie", 
+    "rating": 2,
+    "revCount": 286,
+    "review": "Kouign Amann and croissant with banana worth every single dime.",
+    "resAvatar" : "images/res3.jpg",
+    "avatar" : "images/avatar-03.svg"
+  },
+  {
+    "name": "Foodie Adventures", 
+    "rating": 3,
+    "revCount": 6586,
+    "review": "Chris was engaging and fun and kept us laughing and eating!",
+    "resAvatar" : "images/res4.jpg",
+    "avatar" : "images/avatar-04.svg"
+  }
+]

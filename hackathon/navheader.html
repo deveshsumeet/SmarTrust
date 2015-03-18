@@ -1,0 +1,82 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../review-service/review-service.html">
+<link rel="import" href="review-card.html">
+
+<polymer-element name="nav-header" attributes="show">
+  <template>
+        <style>
+      :host {
+        display: block;
+        width: 100%;
+      }
+      
+      img {
+        border-radius: 4px;
+      }
+
+      .avatarBlock {
+        padding: 12px;
+      }
+
+      .revBlock{
+        background-color: #FFFFFF;
+      }
+
+      .item {
+        box-sizing: border-box;
+        height: 80px;
+        border-bottom: 1px solid #ddd;
+        padding: 4px;
+        cursor: default;
+        background-color: white;
+        overflow: hidden;
+      }
+
+      .box-header {
+        background-color: #D1D3E0;
+      }
+
+      .box-header h3{
+        margin: 10px;
+      }
+
+      .revBlock {
+        background-color: #ECECF4;
+      }
+
+      paper-fab.blue {
+        background: #5677fc;
+      }
+
+      .resAvatar{
+        width: 50px;
+        height: 50px
+      }
+
+    </style>
+  <core-drawer-panel id="drawerPanel" responsiveWidth="800px">
+    <core-header-panel drawer mode="seamed" >
+      <core-toolbar id="navheader">
+        <span>ADAM Reviews</span>
+      </core-toolbar>
+      <core-menu selected="0">
+          <paper-item>
+          <core-icon icon="label-outline"></core-icon>Write a Review
+        </paper-item>
+        <paper-item>
+          <core-icon icon="label-outline"></core-icon>
+          Register Merchant
+        </paper-item>
+        <paper-item>
+          <core-icon icon="label-outline"></core-icon>
+          Settings
+        </paper-item>
+      </core-menu>
+    </core-header-panel>  
+  </template>
+  <script>
+   Polymer({
+   });
+  </script>
+
+</polymer-element>
