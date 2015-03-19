@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/x-rating/x-rating.html">
 <link rel="import" href="../myreview-service/myreview-service.html">
 
 <polymer-element name="my-reviews">
@@ -20,6 +21,7 @@
         font-size: 18px;
         margin-top: 3px;
         font-weight: bold;
+        color: #323857;
       }
 
       header span.rating{
@@ -30,15 +32,27 @@
       header span.comment{
         font-size: 14px;
         margin-top: 3px;
+        color: #373737;
       }
       time {
         font-size: 12px;
         font-weight: 400;
         letter-spacing: 1px;
       }
+      
+      .box-header {
+        background-color: #D1D3E0;
+      }
+
+      .box-header h3{
+        margin: 10px;
+      }
 
     </style>
     <myreview-service id="service" myreviews="{{myreviews}}"></myreview-service>
+      <div class="box-header" layout vertical center justified>
+        <h3 data-anchor-id="core-input.attributes">My reviews</h3>
+      </div>
       <core-selector>
         <template repeat="{{myreview in myreviews}}">
           <div id="myreviewContainer" flex layout horizontal>
@@ -48,7 +62,7 @@
                   <span class="name">{{myreview.restaurantName}}</span>
                   <time>{{myreview.timestamp}}</time>
                 </span>
-                <span class="rating">{{myreview.rating}} Rating</span>
+                <span class="rating"><x-rating value="{{myreview.rating}}" readonly></x-rating> Rating</span>
                 <span id="lastline" layout horizontal center justified>
                   <span class="comment" flex="">{{myreview.comment}}</span>
                 </span>
