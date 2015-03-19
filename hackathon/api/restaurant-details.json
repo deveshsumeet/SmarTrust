@@ -1,0 +1,28 @@
+{
+ "restaurants": [
+   {
+     "_id": "55095be35a7959281f8dfd71",
+     "contact": "(408) 719-9811",
+     "pincode": 95035,
+     "country": "USA",
+     "state": "CA",
+     "city": "Milpitas",
+     "street": "182 Ranch Dr",
+     "restaurantName": "Banana Leaf",
+     "__v": 0,
+     "date_created": "2015-03-18T11:05:07.059Z"
+   },
+   {
+     "_id": "55096666bfa783e92045eb1f",
+     "contact": "(408) 774-18",
+     "pincode": 94086,
+     "country": "USA",
+     "state": "CA",
+     "city": "Sunnyvale",
+     "street": "190 S Murphy Ave",
+     "restaurantName": "Dishdash",
+     "__v": 0,
+     "date_created": "2015-03-18T11:49:58.072Z"
+   }
+ ]
+}
