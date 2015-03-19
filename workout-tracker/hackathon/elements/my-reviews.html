@@ -39,8 +39,7 @@
 
     </style>
     <myreview-service id="service" myreviews="{{myreviews}}"></myreview-service>
-    <core-selector>
-      <core-list id="list" myreviews="{{myreviews}}" flex>
+      <core-selector>
         <template repeat="{{myreview in myreviews}}">
           <div id="myreviewContainer" flex layout horizontal>
             <img id="restaurantAvatar" src="{{myreview.restaurantAvatar}}"/>
@@ -54,10 +53,9 @@
                   <span class="comment" flex="">{{myreview.comment}}</span>
                 </span>
             </header>
-        
         </div>
       </template>
-    </core-selector>
+      </core-selector>
   </template>
   <script>
    Polymer({
