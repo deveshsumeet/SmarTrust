@@ -21,20 +21,16 @@
 						<span>{{user.email}}</span>
 					</div>
 				</core-toolbar>
-				<core-menu selected="0">
-				   	<a href="registerMerchant.html" target="_self">
-				    	<core-item icon="add-box" label="Register Merchant"><a href="#settings" target="_self"></a></core-item>
-			    	</a>
-    				<core-item icon="maps:rate-review" label="My Reviews"><a href="#account" target="_self"></a></core-item>
-    				<core-submenu icon="maps:local-restaurant" label="Restaurants">
-						<a href="merchantReview.html" target="_self">
-							<core-item icon="hardware:keyboard-arrow-right" label="Lous Cafe "></core-item>
-						</a>
-					    <core-item icon="hardware:keyboard-arrow-right" label="Off the Grid"></core-item>
-					    <core-item icon="hardware:keyboard-arrow-right" label="B Patisserie "></core-item>
-					    <core-item icon="hardware:keyboard-arrow-right" label="Foodie Adventures"></core-item>
-					    <core-item icon="hardware:keyboard-arrow-right" label="Sakoon"></core-item>
-					</core-submenu>
+				<core-menu selected="1">
+					<core-item icon="add-box" label="Register Merchant" class="menu">
+				   		<a href="registerMerchant.html" target="_self"></a>
+			   		</core-item>
+    				<core-item icon="maps:rate-review" label="My Reviews">
+    					<a href="myReviews.html" target="_self"></a>
+    				</core-item>
+    				<core-item icon="maps:local-restaurant" label="Restaurants">
+    					<a href="merchantReview.html" target="_self"></a>
+    				</core-item>
 				</core-menu>
 			</core-header-panel>
 			<core-header-panel main>
@@ -46,32 +42,8 @@
 					<paper-icon-button icon="search" role="button"></paper-icon-button>
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}"></google-signin>
 				</core-toolbar>
-				<div class="content" vertical >
-					<paper-shadow class="businessCard" z="2">
-						<h1 class="restaurantName">Lous Cafe</h1>
-	    				<strong class="street-address">Address:</strong>
-	       			    <span itemprop="streetAddress">Seal Rock Dr &amp; El Camino Del Mar</span>
-	       			    <br>
-	       			    <span itemprop="addressLocality">San Francisco</span>, <span itemprop="addressRegion">CA</span> <span itemprop="postalCode">94101</span>	
-	       			    <br>
-	       			    <core-icon icon="communication:call" style="width: 18px; height: 18px"></core-icon>(415) 379-4429
-
-	       			    <section on-tap="{{toggleDialog1}}">
-	       			    	<span class="getDirections"><core-icon icon="maps:directions" style="width: 18px; height: 18px"></core-icon>Get Directions</span>
-	       			        <paper-action-dialog backdrop layered="false" class="map">
-								<google-map latitude="37.77493" longitude="-122.41942" fitToMarkers>
-								  <google-map-marker latitude="37.779" longitude="-122.3892"
-								      draggable="true" title="Go Giants!"></google-map-marker>
-								  <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
-								</google-map>
-								<paper-button class="top" affirmative autofocus>Tap me to close</paper-button>
-						    </paper-action-dialog>
-					    </section>
-	       			    
-					</paper-shadow>
-				</div>
-				<div class="container" layout horizontal center>
-					<my-reviews show="all" ></my-reviews>
+				<div class="content" layout horizontal center>
+					<my-reviews flex></my-reviews>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>

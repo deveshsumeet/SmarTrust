@@ -32,7 +32,7 @@ html,body {
   height: 100%;
   margin: 0;
   background-color: #E5E5E5;
-  font-family: "RobotoDraft",Helvetica,Arial,sans-serif;
+  font-family: "RobotoDraft", sans-serif;
 }
 
 .box {
@@ -142,7 +142,7 @@ core-field {
 }
 
 .label{
-  width: 75px;
+  width: 80px;
 }
 .register{
   width: 70%
@@ -166,9 +166,8 @@ core-item {
   font-size: 13px !important
 }
 
-
-
-paper-input-decorator.invalid /deep/ .focused-underline {
-    /* line and color when the input is invalid and focused */
-    background-color: salmon;
+core-item.core-selected {
+    font-weight: bold;
+    background-color: #F0F0F0; 
 }
+
