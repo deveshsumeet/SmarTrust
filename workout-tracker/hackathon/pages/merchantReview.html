@@ -13,7 +13,7 @@
 	</head>
 <body fullbleed layout vertical unresolved>
 	<template is="auto-binding">
-		<section >
+		<section>
 			<paper-fab class="writeReview bottom" icon="create" on-tap="{{ newReview }}" role="button"  tabindex="0" aria-label="launch" title="Write a review"></paper-fab>
 	        <paper-action-dialog backdrop class="reviewDialog" layered="false">
 	       		<h1>Lous Cafe</h1>
@@ -34,7 +34,7 @@
 	    	</paper-action-dialog>
 		</section>
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
-			<core-header-panel drawer mode="scroll">
+			<core-header-panel drawer>
 				<core-toolbar id="navheader" class="tall coverimg">
 					<img class="middle profile" src="{{user.profile}}" hidden?="{{!user.profile}}">
 					<div class="bottom" layout vertical flex>
@@ -54,8 +54,8 @@
     				</core-item>
 				</core-menu>
 			</core-header-panel>
-			<core-header-panel main>
-				<core-toolbar id="mainheader" class="tall animate">
+			<core-header-panel main mode="waterfall-tall">
+				<core-toolbar id="mainheader">
 					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
 					<div flex></div>
 					<span class="bottom indent title">ADAM Reviews</span>
