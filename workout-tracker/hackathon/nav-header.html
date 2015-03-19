@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="elements.html">
+
+<polymer-element name="nav-header" attributes="show">
+  <template>
+    <style>
+      #navheader {
+        background-color: #07155A;
+        color: #FFFFFF;
+      }
+      core-icon{
+        color: #B1C0E0
+      }
+    </style>
+  
+    <core-header-panel drawer mode="seamed" >
+      <core-toolbar id="navheader">
+        <span>ADAM Reviews</span>
+      </core-toolbar>
+      <core-menu selected="0">
+          <paper-item>
+          <core-icon icon="label-outline"></core-icon>Write a Review
+        </paper-item>
+        <paper-item>
+          <core-icon icon="label-outline"></core-icon>
+          Register Merchant
+        </paper-item>
+        <paper-item>
+          <core-icon icon="label-outline"></core-icon>
+          Settings
+        </paper-item>
+      </core-menu>
+    </core-header-panel>  
+  </template>
+  <script>
+   Polymer({
+   });
+  </script>
+
+</polymer-element>

@@ -1,0 +1,22 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../restaurant-service/restaurantdetails-service.html">
+<link rel="import" href="../styles/paper-input-decorator.html">
+
+<link rel="import" href="../elements.html">
+
+<polymer-element name="app-bar" noscript>
+ 	<template>
+ 		<core-style ref="main"></core-style>
+	  	<restaurantdetails-service id="service" restaurants="{{restaurants}}" url="http://192.168.1.5:3000/restaurants">
+	  	</restaurantdetails-service>
+	    <paper-input-decorator id="restautantList" label="Restaurants" flex>
+		    <input id="restaurantInput" list="restaurantSearch" is="core-input">
+		    <datalist id="restaurantSearch">
+		    	<template repeat="{{restaurant in restaurants.restaurants}}">
+		    		<option value="{{restaurant.restaurantName}}"></option>
+		    	</template>
+		    </datalist>
+		</paper-input-decorator>
+    </template>
+</polymer-element>
