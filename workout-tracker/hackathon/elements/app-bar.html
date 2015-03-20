@@ -8,7 +8,7 @@
 <polymer-element name="app-bar" noscript>
     <template>
         <core-style ref="main"></core-style>
-        <restaurantdetails-service id="service" restaurants="{{restaurants}}" url="http://192.168.1.5:3000/restaurants">
+        <restaurantdetails-service id="service" restaurants="{{restaurants}}" url="http://localhost:3000/restaurants">
         </restaurantdetails-service>
         <paper-input-decorator id="restautantList" label="Restaurants" flex>
             <input id="restaurantInput" list="restaurantSearch" is="core-input">
