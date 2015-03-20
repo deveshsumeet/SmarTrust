@@ -12,16 +12,22 @@ exports.index = function (req, res) {
     }
     Transaction.find(findCriteria).select('userId restaurantId transactionNumber -_id').exec(function (err, docs) {
         if (!err) {
-            res.status(200).json({
-                transactions:docs
-            })
+            /*
+             use Manju's function with docs as input. It should create a json object with following fields:
+             - rating
+             - review
+             - if (typeof restaurantId != 'undefined')
+             restaurantId
+             else
+             userId
+             */
         } else {
             res.status(500).json({
                 message: err
             })
         }
     });
-}
+};
 
 exports.create = function (req, res) {
 
