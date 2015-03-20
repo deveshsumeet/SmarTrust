@@ -13,9 +13,11 @@
 <body fullbleed layout vertical unresolved>
 	<template is="auto-binding">
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
-			<core-header-panel drawer mode="scroll">
-				<core-toolbar id="navheader" class="tall coverimg">
-					<img class="middle profile" src="{{user.profile}}" hidden?="{{!user.profile}}">
+			<core-header-panel drawer mode="waterfall-tall">
+				<core-toolbar id="navheader">
+					<div class="middle" layout vertical flex center>
+						<img class="profile" src="{{user.profile}}" hidden?="{{!user.profile}}">
+					</div>
 					<div class="bottom" layout vertical flex center>
 						<span>{{user.name}}</span>
 						<span>{{user.email}}</span>
@@ -43,7 +45,7 @@
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
 				<div class="content" layout horizontal center>
-					<my-reviews flex url="http://localhost:3000/transactions?userId=aanchalsikka"></my-reviews>
+					<my-reviews flex url="http://192.168.1.5:3000/transactions?userId=aanchalsikka"></my-reviews>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>

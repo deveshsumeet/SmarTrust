@@ -14,9 +14,11 @@
 <body fullbleed layout vertical unresolved>
 	<template is="auto-binding">
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
-			<core-header-panel drawer mode="scroll">
-				<core-toolbar id="navheader" class="tall coverimg">
-					<img class="middle profile" src="{{user.profile}}" hidden?="{{!user.profile}}">
+			<core-header-panel drawer mode="waterfall-tall">
+				<core-toolbar id="navheader">
+					<div class="middle" layout vertical flex center>
+						<img class="profile" src="{{user.profile}}" hidden?="{{!user.profile}}">
+					</div>
 					<div class="bottom" layout vertical flex center>
 						<span>{{user.name}}</span>
 						<span>{{user.email}}</span>
@@ -123,7 +125,7 @@
 			var jsonData = JSON.stringify(dataJson);
 			$.ajax({
 				method: "POST",
-				url: "http://localhost:3000/restaurants",
+				url: "http://192.168.1.5:3000/restaurants",
 				data: JSON.stringify(dataJson),
 				contentType: "application/json; charset=utf-8",
 				dataType: "json"
