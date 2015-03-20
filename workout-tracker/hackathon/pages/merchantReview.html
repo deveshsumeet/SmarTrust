@@ -39,9 +39,11 @@
 	    	</paper-action-dialog>
 		</section>
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
-			<core-header-panel drawer>
-				<core-toolbar id="navheader" class="tall coverimg">
-					<img class="middle profile" src="{{user.profile}}" hidden?="{{!user.profile}}">
+			<core-header-panel drawer mode="waterfall-tall">
+				<core-toolbar id="navheader">
+					<div class="middle" layout vertical flex center>
+						<img class="profile" src="{{user.profile}}" hidden?="{{!user.profile}}">
+					</div>
 					<div class="bottom" layout vertical flex center>
 						<span>{{user.name}}</span>
 						<span>{{user.email}}</span>
@@ -69,10 +71,10 @@
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
 				<div class="content" vertical>
-					<res-details url="http://localhost:3000/restaurants?restaurantId=bananaleaf@gravatar.com"></res-details>
+					<res-details url="http://192.168.1.5:3000/restaurants?restaurantId=bananaleaf@gravatar.com"></res-details>
 				</div>
 				<div class="container" layout horizontal center>
-					<review-list url='http://localhost:3000/transactions?restaurantId=bananaleaf@gravatar.com'></review-list>
+					<review-list url='http://192.168.1.5:3000/transactions?restaurantId=bananaleaf@gravatar.com'></review-list>
 					<paper-toast id="toast1" text="Review Submission Cancelled."></paper-toast>
 					<paper-toast id="toast2" class="capsule" text="Review Submitted Successfully!!!" style="padding-right: 60px;"></paper-toast>
 				</div>
