@@ -14,10 +14,10 @@
 }
 
 #navheader img.profile {
+  vertical-align: center !important; 
   border-radius: 50%;
   width: 74px;
   height: 74px;
-  vertical-align: center;
 }
 
 [drawer] {
@@ -167,5 +167,14 @@ core-item {
 core-item.core-selected {
     font-weight: bold;
     background-color: #F0F0F0; 
+}
+
+.registerButton{
+  background-color: #030B31;
+  color: white;
+}
+
+.hiddenMenu{
+  visibility: hidden;
 }
 

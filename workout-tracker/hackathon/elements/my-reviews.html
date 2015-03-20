@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/x-rating/x-rating.html">
 <link rel="import" href="../myreview-service/myreview-service.html">
 
-<polymer-element name="my-reviews">
+<polymer-element name="my-reviews" attributes="url">
   <template>
       <style>
       
@@ -49,12 +49,12 @@
       }
 
     </style>
-    <myreview-service id="service" myreviews="{{myreviews}}"></myreview-service>
+    <myreview-service id="service" myreviews="{{myreviews}}" url="{{url}}"></myreview-service>
       <div class="box-header" layout vertical center justified>
         <h3 data-anchor-id="core-input.attributes">My reviews</h3>
       </div>
       <core-selector>
-        <template repeat="{{myreview in myreviews}}">
+        <template repeat="{{myreview in myreviews.transactions}}">
           <div id="myreviewContainer" flex layout horizontal>
             <img id="restaurantAvatar" src="{{myreview.restaurantAvatar}}"/>
               <header layout vertical flex class>

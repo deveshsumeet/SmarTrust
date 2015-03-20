@@ -8,13 +8,13 @@
 <polymer-element name="app-bar" noscript>
     <template>
         <core-style ref="main"></core-style>
-        <restaurantdetails-service id="service" restaurants="{{restaurants}}" url="http://localhost:3000/restaurants">
+        <restaurantdetails-service id="service" restaurants="{{restaurants}}" url="http://192.168.1.5:3000/restaurants">
         </restaurantdetails-service>
         <paper-input-decorator id="restautantList" label="Restaurants" flex>
             <input id="restaurantInput" list="restaurantSearch" is="core-input">
             <datalist id="restaurantSearch">
                 <template repeat="{{restaurant in restaurants.restaurants}}">
-                    <option id="{{restaurant._id}}" value="{{restaurant.restaurantName}}"></option>
+                    <option id="{{restaurant.restaurantId}}" value="{{restaurant.restaurantName}}"></option>
                 </template>
             </datalist>
         </paper-input-decorator>

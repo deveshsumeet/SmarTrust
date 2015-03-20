@@ -21,15 +21,15 @@
 						<span>{{user.email}}</span>
 					</div>
 				</core-toolbar>
-				<core-menu selected="1">
+				<core-menu selected="2">
 					<core-item icon="add-box" label="Register Merchant" class="menu">
 				   		<a href="registerMerchant.html" target="_self"></a>
 			   		</core-item>
-    				<core-item icon="maps:rate-review" label="My Reviews">
-    					<a href="myReviews.html" target="_self"></a>
-    				</core-item>
     				<core-item icon="maps:local-restaurant" label="Restaurants">
     					<a href="merchantReview.html" target="_self"></a>
+    				</core-item>
+    				<core-item icon="maps:rate-review" label="My Reviews">
+    					<a href="myReviews.html" target="_self"></a>
     				</core-item>
 				</core-menu>
 			</core-header-panel >
@@ -40,10 +40,10 @@
 					<span class="bottom indent title">ADAM Reviews</span>
 					<app-bar></app-bar>
 					<paper-icon-button icon="search" role="button"></paper-icon-button>
-					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}"></google-signin>
+					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
 				<div class="content" layout horizontal center>
-					<my-reviews flex></my-reviews>
+					<my-reviews flex url="http://192.168.1.5:3000/transactions?userId=aanchalsikka"></my-reviews>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>

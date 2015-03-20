@@ -12,25 +12,30 @@
 		<link rel="import" href="../elements/res-details.html">
 	</head>
 <body fullbleed layout vertical unresolved>
+	
 	<template is="auto-binding">
 		<section>
 			<paper-fab class="writeReview bottom" icon="create" on-tap="{{ newReview }}" role="button"  tabindex="0" aria-label="launch" title="Write a review"></paper-fab>
 	        <paper-action-dialog backdrop class="reviewDialog" layered="false">
-	       		<h1>Lous Cafe</h1>
-	       		<span>San Francisco, CA 94101</span>
-	       		<div class="separator"></div>
-	        	<div>
-			      <span>Rating</span>
-			      <paper-slider id="ratings" pin snaps max="5" step="1" value="5" editable></paper-slider>
-			    </div>
-			    
-	        	<paper-input-decorator label="Comments" floatingLabel>
-			      <paper-autogrow-textarea>
-			        <textarea></textarea>
-			      </paper-autogrow-textarea>
-			    </paper-input-decorator>
-				<paper-button class="bottom" affirmative autofocus onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
-				<paper-button class="bottom" affirmative autofocus onclick="document.querySelector('#toast2').show()">Submit</paper-button>
+	        	<form id="submitReview">
+		       		<h1>Lous Cafe</h1>
+		       		<span>San Francisco, CA 94101</span>
+		       		<div class="separator"></div>
+		        	<div>
+				      <span>Rating</span>
+				      <paper-slider id="ratings" pin snaps max="5" step="1" value="{{ratings}}" editable></paper-slider>
+				    </div>
+		        	<paper-input-decorator label="Comments" floatingLabel>
+				      <paper-autogrow-textarea>
+				        <textarea>{{comments}}</textarea>
+				      </paper-autogrow-textarea>
+				    </paper-input-decorator>
+					<paper-button class="bottom" affirmative autofocus onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
+					<paper-button class="bottom" type="submit" on-tap="{{doSend}}; document.querySelector('#toast2').show()" affirmative autofocus>Submit</paper-button>
+				</form>
+				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="dgsajh"
+				  body='{"comments":"{{comments}}", "ratings":"{{ratings}}"' response="{{response}}">
+			    </core-ajax>
 	    	</paper-action-dialog>
 		</section>
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
@@ -42,15 +47,15 @@
 						<span>{{user.email}}</span>
 					</div>
 				</core-toolbar>
-				<core-menu selected="2" id="mainmenu">
-				   	<core-item icon="add-box" label="Register Merchant" class="menu">
+				<core-menu selected="1">
+				    <core-item id="registerMerchantMenu" icon="add-box" label="Register Merchant" class="menu">
 				   		<a href="registerMerchant.html" target="_self"></a>
 			   		</core-item>
-    				<core-item icon="maps:rate-review" label="My Reviews">
-    					<a href="myReviews.html" target="_self"></a>
-    				</core-item>
-    				<core-item icon="maps:local-restaurant" label="Restaurants">
+    				<core-item id="restaurantsMenu" icon="maps:local-restaurant" label="Restaurants" class="menu">
     					<a href="merchantReview.html" target="_self"></a>
+    				</core-item>
+    				<core-item id="myReviewsMenu" icon="maps:rate-review" label="My Reviews" class="hiddenMenu">
+    					<a href="myReviews.html" target="_self"></a>
     				</core-item>
 				</core-menu>
 			</core-header-panel>
@@ -61,13 +66,13 @@
 					<span class="bottom indent title">ADAM Reviews</span>
 					<app-bar></app-bar>
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant}}"></paper-icon-button>
-					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}"></google-signin>
+					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
-				<div class="content" vertical >
-					<res-details id="550a04e29d41b8d82b0abd65"></res-details>
+				<div class="content" vertical>
+					<res-details url="http://192.168.1.5:3000/restaurants?restaurantId=bananaleaf@gravatar.com"></res-details>
 				</div>
 				<div class="container" layout horizontal center>
-					<review-list show="all" ></review-list>
+					<review-list url='http://192.168.1.5:3000/transactions?restaurantId=bananaleaf@gravatar.com'></review-list>
 					<paper-toast id="toast1" text="Review Submission Cancelled."></paper-toast>
 					<paper-toast id="toast2" class="capsule" text="Review Submitted Successfully!!!" style="padding-right: 60px;"></paper-toast>
 				</div>
