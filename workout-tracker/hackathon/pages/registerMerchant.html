@@ -43,38 +43,68 @@
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant}}"></paper-icon-button>
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}"></google-signin>
 				</core-toolbar>
-				<div class="content merchantRegistration" layout vertical left>
+				<div class="content merchantRegistration" layout vertical center>
 					<h2>Merchant Registration</h2>
 					<div class="separator"><i>Please enter the business details in the fields below:</i></div>
-					<core-field center horizontal layout>
-					    <label class="label">Restaurant Name</label>
-					    <input class="register" required id="restaurantName">
-				  	</core-field>
-				  	<core-field center horizontal layout>
-					    <label class="label">Street</label>
-					    <input class="register" required id="street">
-				  	</core-field>
-				  	<core-field center horizontal layout>
-					    <label class="label">City</label>
-					    <input class="register" required id="city">
-				  	</core-field>
-				  	<core-field center horizontal layout>
-					   <label class="label">State</label>
-					   <input class="register" required id="state"/>
-				 	</core-field>
-				  	<core-field center horizontal layout>
-					    <label class="label">Country</label>
-					    <input class="register" required id="country">
-				  	</core-field>
-				  	<core-field center horizontal layout>
-					    <label class="label">Pincode</label>
-					    <input class="register" required id="pincode">
-				  	</core-field>
-				  	<core-field center horizontal layout>
-					    <label class="label">Contact</label>
-					    <input class="register" required id="contact" placeholder="999-999-9999" maxlength="12">
-				  	</core-field>
-				  	<paper-button raised role="button" onclick="registerMerchant();document.querySelector('#toast1').show()">Register</paper-button>
+					<table>
+						<tr>
+							<td>
+					    		<label class="label">Restaurant Name</label>
+				    		</td>
+				    		<td>
+								<input class="register" required id="restaurantName">
+							</td>
+						</tr>
+						<tr>
+							<td>
+					    		<label class="label">Street</label>
+					    	</td>
+					    	<td>
+					    		<input class="register" required id="street">
+					    	</td>
+					    </tr>
+					    <tr>
+					    	<td>
+					    		<label class="label">City</label>
+					    	</td>
+					    	<td>
+					    		<input class="register" required id="city">
+					    	</td>
+					    </tr>
+				  		<tr>
+				  			<td>
+					   			<label class="label">State</label>
+					   		</td>
+					   		<td>
+					   			<input class="register" required id="state"/>
+					   		</td>
+					   	</tr>
+				 		<tr>
+				 			<td>
+					    		<label class="label">Country</label>
+					    	</td>
+					    	<td>
+					    		<input class="register" required id="country">
+					    	</td>
+				  		</tr>
+				  		<tr>
+				  			<td>
+						    	<label class="label">Pincode</label>
+						    </td>
+						    <td>
+						    	<input class="register" required id="pincode">
+						    </td>
+						</tr>
+				  		<tr>
+				  			<td>
+					    		<label class="label">Contact</label>
+					    	</td>
+					    	<td>
+					    		<input class="register" required id="contact" placeholder="999-999-9999" maxlength="12">
+					    	</td>
+					    </tr>
+					</table>
+				  	<paper-button raised class="registerButton" role="button" onclick="registerMerchant();document.querySelector('#toast1').show()">Register</paper-button>
 					<paper-toast id="toast1" class="capsule" text="Merchant Details Added Succesfully!!!" style="padding-right: 60px;"></paper-toast>
 				</div>
 			</core-header-panel>
