@@ -1,6 +1,6 @@
 (function() {
     var template = document.querySelector('template[is=auto-binding]');
-    var host="http://localhost:3000/";
+    template.host="http://localhost:3000/";
     var isAuthenticated = false;
 
     template.toggleDialog1 = function(e) {
@@ -14,25 +14,8 @@
         }
         d.toggle();
     };
-    template.getrestautantID = function(e){
-        var restaurantId="";
-        console.log("QueryString");
-        var restaurantId = "";
-        var query = window.location.search.substring(1);
-        console.log(query);
-        var vars = query.split("&");
-        console.log(vars);
-        for (var i=0;i<vars.length;i++) {
-            var pair = vars[i].split("=");
-            restaurantId = pair[1];
-        }
-        console.log("restaurantId: ");
-        console.log(restaurantId);
-        return restaurantId;
-    }
 
-    template.searchRestaurant = function(e) {
-        console.log("searchRestaurant");
+    template.searchRestaurant1 = function(e) {
         var restaurantSearchInput = document.getElementById('restaurantInput').value;
         var restaurantIds = document.getElementById('restaurantSearch').getElementsByTagName('option');
         var selectedRestaurantId;
@@ -43,8 +26,24 @@
                 selectedRestaurantId = restaurantId;
             };
         };
+
+        var reviewURL = encodeURI("pages/merchantReview.html?id="+selectedRestaurantId);
+        window.open(reviewURL, "_top");
+    };
+
+    template.searchRestaurant = function(e) {
+        var restaurantSearchInput = document.getElementById('restaurantInput').value;
+        var restaurantIds = document.getElementById('restaurantSearch').getElementsByTagName('option');
+        var selectedRestaurantId;
+        for (var i = 0; i < restaurantIds.length; i++) {
+            var restaurantId = restaurantIds[i].id;
+            var restaurantVal = restaurantIds[i].value;
+            if (restaurantVal == restaurantSearchInput) {
+                selectedRestaurantId = restaurantId;
+            };
+        };
+
         var reviewURL = encodeURI("merchantReview.html?id="+selectedRestaurantId);
-        console.log(reviewURL);
         window.open(reviewURL, "_top");
     };
 
@@ -80,10 +79,14 @@
                 var PROFILE_IMAGE_SIZE = 75;
                 var img = resp.result.image && resp.result.image.url.replace(/(.+)\?sz=\d\d/, "$1?sz=" + PROFILE_IMAGE_SIZE);
                 console.log(resp.result);
+
+                var email = resp.result.emails[0].value;
+                var currentUserId = email.replace("@gmail.com", "");
                 template.user = {
                     name: resp.result.displayName,
                     profile: img || null,
-                    email: resp.result.emails[0].value
+                    email: resp.result.emails[0].value,
+                    currentUserId: currentUserId
                 };
             });
         });
@@ -115,4 +118,16 @@
         var coreAjax = document.querySelector('core-ajax');
         coreAjax.go();
     };
+
+    var restaurantId="";
+    var restaurantId = "";
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        restaurantId = pair[1];
+    }
+    template.restaurantId=restaurantId;
 })();
+
+
