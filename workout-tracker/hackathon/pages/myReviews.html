@@ -40,12 +40,12 @@
 					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
 					<div flex></div>
 					<span class="bottom indent title">ADAM Reviews</span>
-					<app-bar url="{{host}}restaurants"></app-bar>
+					<app-bar url="{{hostName}}restaurants"></app-bar>
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant}}"></paper-icon-button>
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
 				<div class="content" layout horizontal center>
-					<my-reviews flex url="{{host}}transactions?userId={{user.currentUserId}}"></my-reviews>
+					<my-reviews flex url="{{hostName}}transactions?userId={{user.currentUserId}}"></my-reviews>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>

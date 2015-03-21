@@ -2,19 +2,17 @@
 <link rel="import" href="../restaurant-service/restaurantdetails-service.html">
 <link rel="import" href="../elements.html">
 
-<polymer-element name="res-details" noscript attributes="url">
+<polymer-element name="res-details" noscript attributes="url restaurantName restaurantStreet restaurantCity restaurantState restaurantPincode">
   <template>
-    <restaurantdetails-service id="service" restaurants="{{restaurants}}" url="{{url}}"></restaurantdetails-service>
+    <restaurantdetails-service id="service" url="{{url}}" restaurantName="{{restaurantName}}" restaurantStreet="{{restaurantStreet}}" restaurantCity="{{restaurantCity}}" restaurantState="{{restaurantState}}" restaurantPincode="{{restaurantPincode}}" restaurantContact="{{restaurantContact}}"></restaurantdetails-service>
     <paper-shadow class="businessCard" z="2">
-      <template repeat="{{restaurant in restaurants.restaurants}}">
-        <h1 class="restaurantName">{{restaurant.restaurantName}}</h1>
+        <h1 class="restaurantName">{{restaurantName}}</h1>
         <strong class="street-address">Address:</strong>
-        <span itemprop="streetAddress">{{restaurant.street}}</span>
+        <span itemprop="streetAddress">{{restaurantStreet}}</span>
         <br>
-        <span itemprop="addressStreet">{{restaurant.city}}</span>, <span itemprop="addressCity">{{restaurant.state}}</span> <span itemprop="pincode">{{restaurant.pincode}}</span>  
+        <span itemprop="addressStreet">{{restaurantCity}}</span>, <span itemprop="addressCity">{{restaurantState}}</span> <span itemprop="pincode">{{restaurantPincode}}</span>  
         <br>
-        <core-icon icon="communication:call" style="width: 18px; height: 18px"></core-icon>{{restaurant.contact}}
-      </template>
+        <core-icon icon="communication:call" style="width: 18px; height: 18px"></core-icon>{{restaurantContact}}
     </paper-shadow>
     </template>
 </polymer-element>

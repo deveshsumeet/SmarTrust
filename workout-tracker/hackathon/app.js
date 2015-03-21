@@ -1,6 +1,7 @@
 (function() {
     var template = document.querySelector('template[is=auto-binding]');
-    template.host="http://localhost:3000/";
+    template.hostName="http://localhost:3000/";
+
     var isAuthenticated = false;
 
     template.toggleDialog1 = function(e) {
@@ -101,7 +102,7 @@
             name: null,
             profile: null,
             email: null,
-            currentUserId : null
+            currentUserId: "anonymous"
         };
 
         var myReviewsMenu = document.getElementById("myReviewsMenu");
@@ -121,7 +122,6 @@
         document.querySelector('#toast3').show()
     };
 
-    var restaurantId="";
     var restaurantId = "";
     var query = window.location.search.substring(1);
     var vars = query.split("&");
@@ -130,6 +130,7 @@
         restaurantId = pair[1];
     }
     template.restaurantId=restaurantId;
+    template.currentUserId = "anonymous";
 })();
 
 

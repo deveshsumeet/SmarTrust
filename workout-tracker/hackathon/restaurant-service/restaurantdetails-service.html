@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
-<polymer-element name="restaurantdetails-service" attributes="url restaurants">
+<polymer-element name="restaurantdetails-service" attributes="url restaurants restaurantName restaurantStreet restaurantCity restaurantState restaurantPincode restaurantContact">
   <template>
     <style>
     :host {
@@ -21,6 +21,13 @@
     },
     restaurantsLoaded: function() {
       this.restaurants = this.$.ajax.response;
+      var restaurantDetail = this.restaurants.restaurants;
+      this.restaurantName = restaurantDetail[0].restaurantName;
+      this.restaurantStreet = restaurantDetail[0].street;
+      this.restaurantCity = restaurantDetail[0].city;
+      this.restaurantState = restaurantDetail[0].state;
+      this.restaurantPincode = restaurantDetail[0].pincode;
+      this.restaurantContact = restaurantDetail[0].contact;
     }
   });
   </script>

@@ -18,8 +18,9 @@
 			<paper-fab class="writeReview bottom" icon="create" on-tap="{{ newReview }}" role="button"  tabindex="0" aria-label="launch" title="Write a review"></paper-fab>
 	        <paper-action-dialog backdrop class="reviewDialog" layered="false">
 	        	<form id="submitReview">
-		       		<h1>Lous Cafe</h1>
-		       		<span>San Francisco, CA 94101</span>
+		       		<h2>{{restaurantName}}</h2>
+		       		<span>{{restaurantStreet}}, {{restaurantCity}}, {{restaurantState}} - {{restaurantPincode}}</span>
+
 		       		<div class="separator"></div>
 		        	<div>
 				      <span>Rating</span>
@@ -66,15 +67,15 @@
 					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
 					<div flex></div>
 					<span class="bottom indent title">ADAM Reviews</span>
-					<app-bar url="{{host}}restaurants"></app-bar>
+					<app-bar url="{{hostName}}restaurants"></app-bar>
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant}}"></paper-icon-button>
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
 				<div class="content" vertical>
-					<res-details url="{{host}}restaurants?restaurantId={{restaurantId}}" ></res-details>
+					<res-details restaurantName="{{restaurantName}}" restaurantStreet="{{restaurantStreet}}" restaurantCity="{{restaurantCity}}" restaurantState="{{restaurantState}}" restaurantPincode="{{restaurantPincode}}" url="{{hostName}}restaurants?restaurantId={{restaurantId}}" ></res-details>
 				</div>
 				<div class="container" layout horizontal center>
-					<review-list url='{{host}}transactions?restaurantId={{restaurantId}}'></review-list>
+					<review-list url='{{hostName}}transactions?restaurantId={{restaurantId}}'></review-list>
 					<paper-toast id="toast1" text="Review Submission Cancelled."></paper-toast>
 					<paper-toast id="toast2" class="capsule" text="Review Submitted Successfully!!!" style="padding-right: 60px;"></paper-toast>
 					<paper-toast id="toast3" class="capsule" text="Could not submit the review. Please try after sometime!!!" style="padding-right: 60px;"></paper-toast>
