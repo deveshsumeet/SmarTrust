@@ -1,6 +1,7 @@
 var Transaction = require('../models/restaurant').Transaction;
 var bitcore = require('bitcore');
 
+
 var Review = require('./../lib/postReview.js');
 var BlockchainTransactions = require('./../lib/blockchaintrasactions.js');
 
@@ -46,7 +47,13 @@ exports.index = function (req, res) {
 					}	
 	        	});
             }
-            res.status(200).json(reviews);
+            console.log("Docs : ***************************")
+            console.log(JSON.stringify(reviews))
+            console.log("Docs : ***************************")
+            console.log("Reviews : ***************************")
+			console.log(JSON.stringify(reviews))
+            console.log("Reviews : ***************************")
+			res.status(200).json(JSON.stringify(reviews));
 
         } else {
             res.status(500).json({
@@ -77,10 +84,10 @@ exports.create = function (req, res) {
     console.log(rating);
     console.log(review);
 
-     var fromAddress = merchantAddresskeys.merchant1;
-	 var privateKey = merchantPrivatekeys.merchant1; 
+     var fromAddress = merchantAddresskeys.merchant2;
+	 var privateKey = merchantPrivatekeys.merchant2; 
 	
-	 var toAddress = merchantAddresskeys.merchant2;
+	 var toAddress = merchantAddresskeys.merchant1;
 	
 	 console.log('************ ourAddress *************'+fromAddress);
 	 console.log('************ privateKey *************'+privateKey);
