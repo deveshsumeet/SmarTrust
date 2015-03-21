@@ -137,10 +137,7 @@ core-field {
 }
 
 .label{
-  width: 80px;
-}
-.register{
-  width: 70%
+  margin: 10px;
 }
 
 .merchantRegistration{

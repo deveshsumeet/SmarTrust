@@ -13,6 +13,18 @@
 		<link rel="import" href="../elements/app-bar.html">
 	</head>
 <body fullbleed layout vertical unresolved>
+	<style>
+		.register{
+			width:375px;
+			display:block;
+			border: 1px solid #999;
+			height: 25px;
+			-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+			-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+			box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+			margin: 10px;
+		}
+	</style>
 	<template is="auto-binding">
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
 			<core-header-panel drawer mode="waterfall-tall">
@@ -46,68 +58,81 @@
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
 				<div class="content merchantRegistration" layout vertical center>
-					<h2>Hospital Registration</h2>
-					<div class="separator"><i>Please enter the business details in the fields below:</i></div>
-					<table>
-						<tr>
-							<td>
-					    		<label class="label">Hospital Name</label>
-				    		</td>
-				    		<td>
-								<input class="register" required id="restaurantName">
-							</td>
-						</tr>
-						<tr>
-							<td>
-					    		<label class="label">Street</label>
-					    	</td>
-					    	<td>
-					    		<input class="register" required id="street">
-					    	</td>
-					    </tr>
-					    <tr>
-					    	<td>
-					    		<label class="label">City</label>
-					    	</td>
-					    	<td>
-					    		<input class="register" required id="city">
-					    	</td>
-					    </tr>
-				  		<tr>
-				  			<td>
-					   			<label class="label">State</label>
-					   		</td>
-					   		<td>
-					   			<input class="register" required id="state"/>
-					   		</td>
-					   	</tr>
-				 		<tr>
-				 			<td>
-					    		<label class="label">Country</label>
-					    	</td>
-					    	<td>
-					    		<input class="register" required id="country">
-					    	</td>
-				  		</tr>
-				  		<tr>
-				  			<td>
-						    	<label class="label">Pincode</label>
-						    </td>
-						    <td>
-						    	<input class="register" required id="pincode">
-						    </td>
-						</tr>
-				  		<tr>
-				  			<td>
-					    		<label class="label">Contact</label>
-					    	</td>
-					    	<td>
-					    		<input class="register" required id="contact" placeholder="999-999-9999" maxlength="12">
-					    	</td>
-					    </tr>
-					</table>
-				  	<paper-button raised class="registerButton" role="button" onclick="registerMerchant(); document.querySelector('#toast1').show()">Register</paper-button>
-					<paper-toast id="toast1" class="capsule" text="Hospital Details Added Succesfully!!!" style="padding-right: 60px;"></paper-toast>
+					<paper-shadow class="businessCard" z="2" layout vertical center>
+						<h2>Hospital Registration</h2>
+						<div class="separator">
+							<i>Please enter the business details in the fields below:</i>
+						</div>
+						<table>
+							<tr>
+								<td>
+						    		<label class="label">Hospital Name</label>
+					    		</td>
+					    		<td>
+									<input class="register" placeholder="Hospital Name" required id="restaurantName">
+								</td>
+							</tr>
+							<tr>
+								<td>
+						    		<label class="label">Email ID</label>
+					    		</td>
+					    		<td>
+									<input class="register" placeholder="Email ID" required id="restaurantId">
+								</td>
+							</tr>
+							<tr>
+								<td>
+						    		<label class="label">Street</label>
+						    	</td>
+						    	<td>
+						    		<input class="register" placeholder="Street" required id="street">
+						    	</td>
+						    </tr>
+						    <tr>
+						    	<td>
+						    		<label class="label">City</label>
+						    	</td>
+						    	<td>
+						    		<input class="register" placeholder="City" required id="city">
+						    	</td>
+						    </tr>
+					  		<tr>
+					  			<td>
+						   			<label class="label">State</label>
+						   		</td>
+						   		<td>
+						   			<input class="register" placeholder="State" required id="state"/>
+						   		</td>
+						   	</tr>
+					 		<tr>
+					 			<td>
+						    		<label class="label">Country</label>
+						    	</td>
+						    	<td>
+						    		<input class="register" placeholder="Country" required id="country">
+						    	</td>
+					  		</tr>
+					  		<tr>
+					  			<td>
+							    	<label class="label">Pincode</label>
+							    </td>
+							    <td>
+							    	<input class="register" placeholder="Pincode" required id="pincode">
+							    </td>
+							</tr>
+					  		<tr>
+					  			<td>
+						    		<label class="label">Contact</label>
+						    	</td>
+						    	<td>
+						    		<input class="register" required id="contact" placeholder="999-999-9999" maxlength="12">
+						    	</td>
+						    </tr>
+						</table>
+					  	<paper-button raised class="registerButton" role="button" on-core-response="{{registrationSuccessful}}" on-core-error="{{registrationFailed}}">Register</paper-button>
+						<paper-toast id="toast1" class="capsule" text="Hospital Details Added Succesfully!!!" style="padding-right: 60px;"></paper-toast>
+						<paper-toast id="toast2" class="capsule" text="Registration failed. Please try after some time!!!" style="padding-right: 60px;"></paper-toast>
+					</paper-shadow>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>
