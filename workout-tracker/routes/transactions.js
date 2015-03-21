@@ -1,6 +1,7 @@
 var Transaction = require('../models/restaurant').Transaction;
 
 exports.index = function (req, res) {
+    console.log("in transaction")
     var restaurantId = req.query.restaurantId;
     var userId = req.query.userId;
     var findCriteria = {};
@@ -21,6 +22,7 @@ exports.index = function (req, res) {
              else
              userId
              */
+            console.log(docs);
         } else {
             res.status(500).json({
                 message: err
@@ -35,6 +37,11 @@ exports.create = function (req, res) {
     var userId = req.body.userId;
     var rating = req.body.rating;
     var review = req.body.review;
+
+    console.log(restaurantId);
+    console.log(userId);
+    console.log(rating);
+    console.log(review);
 
     /*
     Call Manju's service with following parameters:
