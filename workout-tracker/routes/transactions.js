@@ -25,19 +25,6 @@ exports.index = function (req, res) {
     }
     Transaction.find(findCriteria).select('userId restaurantId transactionNumber -_id').exec(function (err, docs) {
         if (!err) {
-            /*
-             use Manju's function with docs as input. It should create a json object with following fields:
-             - rating
-             - review
-             - if (typeof restaurantId != 'undefined')
-             restaurantId
-             else
-             userId
-             
-             
-             */
-<<<<<<< HEAD
-             console.log(docs);
              
             var reviews = [];
             for(count=0;count<docs.length;count++)
@@ -61,10 +48,6 @@ exports.index = function (req, res) {
             }
             res.status(200).json(reviews);
 
-                        
-=======
-            console.log(docs);
->>>>>>> 5c21dfa5597f74e0f68abc7f0d56ae179a71b1c8
         } else {
             res.status(500).json({
                 message: err
@@ -93,15 +76,6 @@ exports.create = function (req, res) {
     console.log(userId);
     console.log(rating);
     console.log(review);
-
-    /*
-    Call Manju's service with following parameters:
-    - rating
-    - review
-    Get back:
-     - transactionNumber
-     - transactionLink
-     */
 
      var fromAddress = merchantAddresskeys.merchant1;
 	 var privateKey = merchantPrivatekeys.merchant1; 
