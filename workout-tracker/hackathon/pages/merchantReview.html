@@ -18,10 +18,14 @@
 			<paper-fab class="writeReview bottom" icon="create" on-tap="{{ newReview }}" role="button"  tabindex="0" aria-label="launch" title="Write a review"></paper-fab>
 	        <paper-action-dialog backdrop class="reviewDialog" layered="false">
 	        	<form id="submitReview">
-		       		<h2>{{restaurantName}}</h2>
-		       		<span>{{restaurantStreet}}, {{restaurantCity}}, {{restaurantState}} - {{restaurantPincode}}</span>
-
-		       		<div class="separator"></div>
+	        		<div class="middle" layout horizontal flex center>
+	        			<img src="../images/writeReview.jpeg" width="170px" height="150px">
+			       		<header layout vertical flex>
+			       			<h1>{{restaurantName}}</h1>
+			       			<span class="reviewHeader">{{restaurantStreet}}, {{restaurantCity}}, {{restaurantState}} - {{restaurantPincode}}</span>
+			       		</header>
+					</div>
+		       		<div class="separator"><i>Please add your valuable review below:</i></div>
 		        	<div>
 				      <span>Rating</span>
 				      <paper-slider id="ratings" pin snaps max="5" step="1" value="{{ratings}}" editable></paper-slider>
@@ -31,8 +35,10 @@
 				        <textarea value="{{comments}}"></textarea>
 				      </paper-autogrow-textarea>
 				    </paper-input-decorator>
-					<paper-button class="bottom" affirmative autofocus onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
-					<paper-button class="bottom" type="submit" on-tap="{{doSend}}" affirmative autofocus>Submit</paper-button>
+
+					<paper-button raised affirmative onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
+					<paper-button raised type="submit" on-tap="{{doSend}}" affirmative autofocus>Submit</paper-button>
+					
 				</form>
 				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="{{host}}transactions"
 				  body='restaurantId={{restaurantId}}&userId={{user.currentUserId}}&review={{comments}}&rating={{ratings}}' on-core-response="{{handleResponse}}" on-core-error="{{handleError}}">

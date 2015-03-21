@@ -120,10 +120,11 @@ paper-dropdown-menu{
   padding: 16px;
   font-size: 14px;
   border-top: 1px solid #e0e0e0;
+  border-color: #07155A;
 }
 
 .reviewDialog{
-  width: 50%;
+  width: 70%;
 }
 
 paper-slider{
@@ -177,5 +178,14 @@ core-item.core-selected {
 
 .hiddenMenu{
   visibility: hidden;
+}
+
+.reviewHeader{
+  color: #030B31;
+}
+
+.reviewButton{
+  background-color: #030B31;
+  color: #FFFFFF;
 }
 

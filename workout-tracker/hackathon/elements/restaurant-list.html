@@ -4,79 +4,76 @@
 
 <polymer-element name="restaurant-list" attributes="show">
   <template>
-        <style>
-      :host {
-        display: block;
-        width: 100%;
-      }
-      
+    <style>
       img {
         border-radius: 4px;
+        padding-right: 10px;
       }
-      .avatarBlock {
-        padding: 12px;
-      }
-      .revBlock{
+
+      #restaurantContainer{
         background-color: #FFFFFF;
+        padding : 10px;
+        margin : 2px;
       }
 
-      .rating .stars_0 {
-          background-position: -3px -3px
-      }
 
-      .rating .stars_1 {
-          background-position: -3px -21px
-      }
-
-      .rating .stars_2 {
-          background-position: -3px -57px
-      }
-      .rating .stars_3 {
-          background-position: -100px -93px
-      }
-
-      .rating .stars_4 {
-          background-position: -3px -129px
-      }
-
-      .rating .stars_5 {
-          background-position: -100px -165px
-      }
-      .item {
-        box-sizing: border-box;
-        height: 80px;
-        border-bottom: 1px solid #ddd;
-        padding: 4px;
-        cursor: default;
-        background-color: white;
-        overflow: hidden;
-      }
       .box-header {
-        background-color: #D7DFEF;
+        background-color: #D1D3E0;
       }
+
       .box-header h3{
         margin: 10px;
       }
-      .revBlock {
-        background-color: #ECECF4;
+      header span.name {
+        font-size: 18px;
+        margin-top: 3px;
+        font-weight: bold;
+        color: #323857;
       }
+
+      header span.rating{
+        font-size: 12px;
+        margin-top: 3px;
+      }
+
+      header span.comment{
+        font-size: 14px;
+        margin-top: 3px;
+        color: #373737;
+      }
+
+      .grid{
+        background-color: #E5E5E5;
+       
+      }
+      .card{
+        background-color: #FFFFFF;
+        margin: 20px;
+      }
+
     </style>
-    <restaurant-service id="service" restaurants="{{restaurants}}"></restaurant-service>
-      <paper-shadow class="card" z="1">
-        <div class="box-header" layout vertical center justified>
-          <h3 data-anchor-id="core-input.attributes">All Restaurants</h3>
-            
+    <paper-shadow class="card" z="1" vertical layout>
+      <restaurant-service id="service" restaurants="{{restaurants}}"></restaurant-service>
+      <div class="box-header" layout vertical center justified>
+        <h3 data-anchor-id="core-input.attributes">All reviews</h3>
+      </div>
+      <div class="grid" horizontal center>
+        <core-selector>
           <template repeat="{{restaurant in restaurants}}">
-            <restaurant-card>
-              <img class="resAvatar" src="{{restaurant.resAvatar}}" width="60" height="60">
-              <h5>{{restaurant.name}}
-              <br/>
-              {{restaurant.rating}} Rating 
-              <br/>
-              {{restaurant.revCount}} Reviews</h5>
-              <p><img src="{{restaurant.avatar}}" width="30" height="30"> {{restaurant.review}}</p>
-            </restaurant-card>
+            <div id="restaurantContainer" flex layout horizontal>
+              <img class="resAvatar" src="{{restaurant.resAvatar}}" width="50" height="50">
+              <header layout vertical flex class>
+                <span layout horizontal center justified>
+                  <span class="name">{{restaurant.name}}</span>
+                </span>
+                <span class="rating"><x-rating value="{{restaurant.rating}}" readonly></x-rating> Rating </span>
+                <span id="lastline" layout horizontal center justified>
+                  <span class="comment" flex=""><img src="{{restaurant.avatar}}" width="30" height="30"> {{restaurant.review}}</span>
+                </span>
+              </header>
+            </div>
           </template>
+        </core-selector>
       </div>
     </paper-shadow>
   </template>
