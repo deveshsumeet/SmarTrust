@@ -34,7 +34,7 @@
 					<paper-button class="bottom" type="submit" on-tap="{{doSend}}; document.querySelector('#toast2').show()" affirmative autofocus>Submit</paper-button>
 				</form>
 				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="/transactions"
-				  body='"restaurantId":"{{restaurantId}}", "userId":"{{user.email}}","review":"{{comments}}", "rating":"{{ratings}}"' response="{{response}}">
+				  body='restaurantId={{restaurantId}}&userId={{user.email}}&comments={{comments}}&ratings={{ratings}}' response="{{response}}">
 			    </core-ajax>
 	    	</paper-action-dialog>
 		</section>
@@ -71,7 +71,7 @@
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
 				<div class="content" vertical>
-					<res-details url="{{host}}restaurants?restaurantId={{restaurantId}}"></res-details>
+					<res-details url="{{host}}restaurants?restaurantId={{restaurantId}}" ></res-details>
 				</div>
 				<div class="container" layout horizontal center>
 					<review-list url='{{host}}transactions?restaurantId={{restaurantId}}'></review-list>
