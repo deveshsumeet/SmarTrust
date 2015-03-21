@@ -4,13 +4,14 @@
 }
 
 #navheader {
-background-color: #d0d0d0;
-background-image: url('images/headerImage.jpg');
-background-blend-mode: multiply;
-background-repeat: no-repeat;
-background-size: contain;
-font-size: inherit;
-vertical-align: middle;
+  background-color: #999;
+  color: #FFFFFF;
+  background-image: url('images/headerImage.jpg');
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: inherit;
+  vertical-align: middle; 
 }
 
 #navheader img.profile {
@@ -89,7 +90,7 @@ section > div {
 
 
 paper-fab.writeReview{
-  background: #1E7B1E;
+  background: #04A641;
   color: #fff;
   bottom: 24px;
   right: 24px;
@@ -156,21 +157,18 @@ core-field {
 }
 
 paper-button[raised].colored {
-  background: #1E7B1E;
+  background: #04A641;
   color: #fff;
   width: 25%;
 }
 
 core-item {
-  font-size: 13px !important;
-    background-color: #d0d0d0;
-  color: white; 
+  font-size: 13px !important
 }
 
 core-item.core-selected {
     font-weight: bold;
-    background-color: #04A641;
-    color: white; 
+    background-color: #F0F0F0; 
 }
 
 .registerButton{
@@ -183,11 +181,11 @@ core-item.core-selected {
 }
 
 .reviewHeader{
-  color: #030B31;
+  color: #04A641;
 }
 
 .reviewButton{
-  background-color: #030B31;
+  background-color: #04A641;
   color: #FFFFFF;
 }
 
