@@ -60,7 +60,7 @@ Review.prototype.postReview = function(fromAddress, toAddress, fromPrivateKey, r
 			var scriptPubKey;
 			var oIndex;
 			
-			var blockChaindata = '{"truthmeter":'+rating+',"truth":'+postReviewData+'}';
+			var blockChaindata = '{"review":'+rating+',"rating":'+postReviewData+'}';
 			
 			for(var i = 0; i < utxos.length; i++)  {
 				txnObj = utxos[i].toObject();
