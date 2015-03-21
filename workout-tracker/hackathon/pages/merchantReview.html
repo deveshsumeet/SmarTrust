@@ -27,13 +27,13 @@
 				    </div>
 		        	<paper-input-decorator label="Comments" floatingLabel>
 				      <paper-autogrow-textarea>
-				        <textarea>{{comments}}</textarea>
+				        <textarea value="{{comments}}"></textarea>
 				      </paper-autogrow-textarea>
 				    </paper-input-decorator>
 					<paper-button class="bottom" affirmative autofocus onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
 					<paper-button class="bottom" type="submit" on-tap="{{doSend}}; document.querySelector('#toast2').show()" affirmative autofocus>Submit</paper-button>
 				</form>
-				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="dgsajh"
+				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="http://localhost:3000/transactions"
 				  body='{"comments":"{{comments}}", "ratings":"{{ratings}}"' response="{{response}}">
 			    </core-ajax>
 	    	</paper-action-dialog>
