@@ -40,7 +40,7 @@
 					<paper-button raised type="submit" on-tap="{{doSend}}" affirmative autofocus>Submit</paper-button>
 					
 				</form>
-				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="{{hostName}}transactions"
+				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="{{host}}transactions"
 				  body='restaurantId={{restaurantId}}&userId={{user.currentUserId}}&review={{comments}}&rating={{ratings}}' on-core-response="{{handleResponse}}" on-core-error="{{handleError}}">
 			    </core-ajax>
 	    	</paper-action-dialog>

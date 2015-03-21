@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js" type="text/javascript"></script>
+
+<polymer-element name="gravatar-image" attributes="userId imagePath">
+  <template>
+    <style>
+      img {
+        border-radius: 4px;
+        padding-right: 10px;
+      }
+    </style>
+      <img class="resAvatar" src="{{imagePath}}" width="50" height="50">
+  </template>
+
+  <script>
+  Polymer({
+    handleFavorite: function(event, detail, sender) {
+      var post = sender.templateInstance.model.post;
+      this.$.service.setFavorite(post.uid, post.favorite);
+    },
+    ready : function(){
+      var avatarString = CryptoJS.MD5(this.userId);
+      this.imagePath = 'http://www.gravatar.com/avatar/' + avatarString + '.jpg';
+      console.log(this.imagePath);
+    }
+  });
+  </script>
+</polymer-element>

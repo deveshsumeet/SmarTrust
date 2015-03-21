@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../restaurant-service/restaurant-service.html">
 <link rel="import" href="restaurant-card.html">
+<link rel="import" href="gravatar-image.html">
 
 <polymer-element name="restaurant-list" attributes="show">
   <template>
@@ -61,7 +62,7 @@
         <core-selector>
           <template repeat="{{restaurant in restaurants}}">
             <div id="restaurantContainer" flex layout horizontal>
-              <img class="resAvatar" src="{{restaurant.resAvatar}}" width="50" height="50">
+              <gravatar-image userId="deveshsumeet@gmail.com"></gravatar-image>
               <header layout vertical flex class>
                 <span layout horizontal center justified>
                   <span class="name">{{restaurant.name}}</span>
