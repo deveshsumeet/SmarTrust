@@ -22,7 +22,8 @@ var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000
                 replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };       
 
 
-var mongodbUri = 'mongodb://heroku_app35106410:h0gkohgcauviotu3n662du25rc@ds053698.mongolab.com:53698/heroku_app35106410/review_details';
+//var mongodbUri = 'mongodb://heroku_app35106410:h0gkohgcauviotu3n662du25rc@ds053698.mongolab.com:53698/heroku_app35106410/review_details';
+var mongodbUri='mongodb://localhost/review_details';
 var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
 mongoose.connect(mongooseUri, options);
