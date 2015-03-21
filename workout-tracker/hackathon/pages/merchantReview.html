@@ -34,7 +34,7 @@
 					<paper-button class="bottom" type="submit" on-tap="{{doSend}}; document.querySelector('#toast2').show()" affirmative autofocus>Submit</paper-button>
 				</form>
 				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="/transactions"
-				  body='{"restaurantId":"bananaleaf@gravatar.com", "userId":"{{user.email}}","comments":"{{comments}}", "ratings":"{{ratings}}"' response="{{response}}">
+				  body='{"restaurantId":"bananaleaf@gravatar.com", "userId":"{{user.email}}","comments":"{{comments}}", "ratings":"{{ratings}}"}' response="{{response}}">
 			    </core-ajax>
 	    	</paper-action-dialog>
 		</section>
