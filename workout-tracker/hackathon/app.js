@@ -78,7 +78,6 @@
             }).then(function(resp) {
                 var PROFILE_IMAGE_SIZE = 75;
                 var img = resp.result.image && resp.result.image.url.replace(/(.+)\?sz=\d\d/, "$1?sz=" + PROFILE_IMAGE_SIZE);
-                console.log(resp.result);
 
                 var email = resp.result.emails[0].value;
                 var currentUserId = email.replace("@gmail.com", "");
@@ -96,27 +95,30 @@
     };
 
     template.onSignoutSuccess = function(e, detail, sender) {
-        console.log("onSignoutSuccess");
         this.isAuthenticated = false;
 
         template.user = {
             name: null,
             profile: null,
-            email: null
+            email: null,
+            currentUserId : null
         };
 
         var myReviewsMenu = document.getElementById("myReviewsMenu");
         myReviewsMenu.className = "hiddenMenu";
     };
 
-    template.newMail = function(e, detail, sender) {
-        console.warn('Not implemented: Create new mail');
-    };
-
     template.doSend = function(event, detail, sender){
-        console.log(detail);
         var coreAjax = document.querySelector('core-ajax');
         coreAjax.go();
+    };
+
+    template.handleResponse = function(event, response){
+        document.querySelector('#toast2').show()
+    };
+
+    template.handleError = function(event, response){
+        document.querySelector('#toast3').show()
     };
 
     var restaurantId="";

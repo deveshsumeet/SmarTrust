@@ -31,10 +31,10 @@
 				      </paper-autogrow-textarea>
 				    </paper-input-decorator>
 					<paper-button class="bottom" affirmative autofocus onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
-					<paper-button class="bottom" type="submit" on-tap="{{doSend}}; document.querySelector('#toast2').show()" affirmative autofocus>Submit</paper-button>
+					<paper-button class="bottom" type="submit" on-tap="{{doSend}}" affirmative autofocus>Submit</paper-button>
 				</form>
-				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="/transactions"
-				  body='restaurantId={{restaurantId}}&userId={{user.email}}&comments={{comments}}&ratings={{ratings}}' response="{{response}}">
+				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="{{host}}transactions"
+				  body='restaurantId={{restaurantId}}&userId={{user.currentUserId}}&review={{comments}}&rating={{ratings}}' on-core-response="{{handleResponse}}" on-core-error="{{handleError}}">
 			    </core-ajax>
 	    	</paper-action-dialog>
 		</section>
@@ -77,6 +77,7 @@
 					<review-list url='{{host}}transactions?restaurantId={{restaurantId}}'></review-list>
 					<paper-toast id="toast1" text="Review Submission Cancelled."></paper-toast>
 					<paper-toast id="toast2" class="capsule" text="Review Submitted Successfully!!!" style="padding-right: 60px;"></paper-toast>
+					<paper-toast id="toast3" class="capsule" text="Could not submit the review. Please try after sometime!!!" style="padding-right: 60px;"></paper-toast>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>
