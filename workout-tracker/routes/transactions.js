@@ -13,6 +13,7 @@ var reviewToBlockchain = new Review('https://test-insight.bitpay.com', Networks.
 var blockChainTransaction = new BlockchainTransactions();
 
 exports.index = function (req, res) {
+    console.log("in transaction")
     var restaurantId = req.query.restaurantId;
     var userId = req.query.userId;
     var findCriteria = {};
@@ -35,6 +36,7 @@ exports.index = function (req, res) {
              
              
              */
+<<<<<<< HEAD
              console.log(docs);
              
             var reviews = [];
@@ -60,6 +62,9 @@ exports.index = function (req, res) {
             res.status(200).json(reviews);
 
                         
+=======
+            console.log(docs);
+>>>>>>> 5c21dfa5597f74e0f68abc7f0d56ae179a71b1c8
         } else {
             res.status(500).json({
                 message: err
@@ -83,6 +88,11 @@ exports.create = function (req, res) {
 	 console.log('************ ready to transmit-review *************'+userId);
 	 console.log('************ ready to transmit-review *************'+rating);
 	 console.log('************ ready to transmit-ratings *************'+review);
+
+    console.log(restaurantId);
+    console.log(userId);
+    console.log(rating);
+    console.log(review);
 
     /*
     Call Manju's service with following parameters:
