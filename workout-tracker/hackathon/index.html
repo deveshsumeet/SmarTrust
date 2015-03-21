@@ -4,6 +4,7 @@
 		<meta name="viewport" 
   content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 		<!-- 1. Load platform support before any code that touches the DOM. -->
+		<title>SmarTrust - Reviews you can trust</title>
 		<script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
 		<link rel="stylesheet" href="app.css">
 		<link rel="import" href="elements.html">
@@ -26,19 +27,22 @@
 					</div>
 				</core-toolbar>
 				<core-menu>
-				    <core-item id="registerMerchantMenu" icon="add-box" label="Register Merchant" class="menu">
+				    <core-item id="registerMerchantMenu" icon="add-box" label="Register Hospital" class="menu">
 				   		<a href="pages/registerMerchant.html" target="_self"></a>
 			   		</core-item>
-    				<core-item id="myReviewsMenu" icon="maps:rate-review" label="My Reviews" class="hiddenMenu">
+    				<core-item id="myReviewsMenu" icon="maps:rate-review" label="My Experience" class="hiddenMenu">
     					<a href="pages/myReviews.html" target="_self"></a>
     				</core-item>
 				</core-menu>
 			</core-header-panel>
 			<core-header-panel main mode="waterfall-tall">
 				<core-toolbar id="mainheader">
-					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
+					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Share your Experience</paper-icon-button>
 					<div flex></div>
-					<span class="bottom indent title">ADAM Reviews</span>
+					<span class="bottom indent title">
+						SmarTrust
+					</span>
+
 					<app-bar url="{{hostName}}restaurants"></app-bar>
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant1}}"></paper-icon-button>
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>

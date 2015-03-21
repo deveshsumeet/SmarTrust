@@ -57,10 +57,10 @@
 					</div>
 				</core-toolbar>
 				<core-menu>
-				    <core-item id="registerMerchantMenu" icon="add-box" label="Register Merchant" class="menu">
+				    <core-item id="registerMerchantMenu" icon="add-box" label="Register Hospital" class="menu">
 				   		<a href="registerMerchant.html" target="_self"></a>
 			   		</core-item>
-    				<core-item id="myReviewsMenu" icon="maps:rate-review" label="My Reviews" class="hiddenMenu">
+    				<core-item id="myReviewsMenu" icon="maps:rate-review" label="My Experience" class="hiddenMenu">
     					<a href="myReviews.html" target="_self"></a>
     				</core-item>
 				</core-menu>
@@ -69,7 +69,9 @@
 				<core-toolbar id="mainheader">
 					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
 					<div flex></div>
-					<span class="bottom indent title">ADAM Reviews</span>
+					<span class="bottom indent title">
+						SmarTrust
+					</span>
 					<app-bar url="{{hostName}}restaurants"></app-bar>
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant}}"></paper-icon-button>
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
