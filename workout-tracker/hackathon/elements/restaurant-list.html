@@ -62,7 +62,7 @@
         <core-selector>
           <template repeat="{{restaurant in restaurants.restaurants}}">
             <div id="restaurantContainer" flex layout horizontal>
-              <gravatar-image userId="deveshsumeet@gmail.com"></gravatar-image>
+              <gravatar-image userId={{restaurant.restaurantId}}></gravatar-image>
               <header layout vertical flex class>
                 <span layout horizontal center justified>
                   <span class="name">{{restaurant.restaurantName}}</span>
