@@ -17,6 +17,7 @@ var transactionSchema = new Schema({
     transactionNumber : { type: String, required: true, trim: true, index: { unique: true } },
     transactionLink : { type: String, required: true },
     restaurantId : { type: String, required: true },
+    restaurantName : { type: String, trim: true, index: { unique: true } },
     userId : { type: String, required: true },
     date_created : { type: Date, required: true, default: Date.now}
 });

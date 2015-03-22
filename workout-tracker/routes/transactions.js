@@ -24,7 +24,7 @@ exports.index = function (req, res) {
     if (typeof userId != 'undefined') {
         findCriteria["userId"] = userId;
     }
-    Transaction.find(findCriteria).select('userId restaurantId transactionNumber -_id').exec(function (err, docs) {
+    Transaction.find(findCriteria).select('userId restaurantId restaurantName transactionNumber -_id').exec(function (err, docs) {
         if (!err) {
 
             var reviews = [];
@@ -44,6 +44,7 @@ exports.index = function (req, res) {
                             transactionData["userId"] = item.userId;
                         } else if (typeof userId != 'undefined') {
                             transactionData["restaurantId"] = item.restaurantId;
+                            transactionData["restaurantName"] = item.restaurantName;
                         }
                         reviews.push(transactionData);
                         callback();
@@ -64,6 +65,7 @@ exports.index = function (req, res) {
 exports.create = function (req, res) {
 
     var restaurantId = req.body.restaurantId;
+    var restaurantName = req.body.restaurantName;
     var userId = req.body.userId;
     var rating = req.body.rating;
     var review = req.body.review;
@@ -71,11 +73,6 @@ exports.create = function (req, res) {
     if (userId == "undefined" || userId == "") {
         userId = "anonymous";
     }
-
-    console.log(restaurantId);
-    console.log(userId);
-    console.log(rating);
-    console.log(review);
 
     var fromAddress = merchantAddresskeys.merchant1;
     var privateKey = merchantPrivatekeys.merchant1;
@@ -113,6 +110,7 @@ exports.create = function (req, res) {
                         newTransaction.transactionNumber = transactionNumber;
                         newTransaction.transactionLink = transactionLink;
                         newTransaction.restaurantId = restaurantId;
+                        newTransaction.restaurantName = restaurantName;
                         newTransaction.userId = userId;
 
                         newTransaction.save(function (err) {
