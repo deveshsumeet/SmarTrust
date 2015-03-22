@@ -38,11 +38,12 @@ exports.index = function (req, res) {
                         console.log("err" + err);
                     } else {
 
+                        transactionData = eval("(" + transactionData + ")");
+
                         if (typeof restaurantId != 'undefined') {
-                            transactionData["userId"] = userId;
-                        }
-                        if (typeof userId != 'undefined') {
-                            transactionData["restaurantId"] = restaurantId;
+                            transactionData["userId"] = item.userId;
+                        } else if (typeof userId != 'undefined') {
+                            transactionData["restaurantId"] = item.restaurantId;
                         }
                         reviews.push(transactionData);
                         callback();
@@ -76,10 +77,10 @@ exports.create = function (req, res) {
     console.log(rating);
     console.log(review);
 
-    var fromAddress = merchantAddresskeys.merchant2;
-    var privateKey = merchantPrivatekeys.merchant2;
+    var fromAddress = merchantAddresskeys.merchant1;
+    var privateKey = merchantPrivatekeys.merchant1;
 
-    var toAddress = merchantAddresskeys.merchant1;
+    var toAddress = merchantAddresskeys.merchant2;
 
     reviewToBlockchain.postReview(fromAddress, toAddress, privateKey, rating, review, function (err, returnedTxId) {
         if (err) {

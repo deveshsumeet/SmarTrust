@@ -51,7 +51,6 @@ Review.prototype.postReview = function(fromAddress, toAddress, fromPrivateKey, r
 		if (err) {
 			throw new Error('Refund unsuccessfull. Issue fetching Unspent Merchant data from Address. ' + err);
 		} else {
-			console.log("utxos: " + utxos );
 			var txnID;
 			var amt;
 			var toAmt;
@@ -59,9 +58,14 @@ Review.prototype.postReview = function(fromAddress, toAddress, fromPrivateKey, r
 			var amtInSatoshis;
 			var scriptPubKey;
 			var oIndex;
-			
-			var blockChaindata = '{"rating":'+rating+',"review":'+postReviewData+'}';
-			
+
+            var blockChaindataJson = {};
+            blockChaindataJson["review"] = postReviewData;
+            blockChaindataJson["rating"] = rating;
+
+            var blockChaindata = JSON.stringify(blockChaindataJson);
+
+
 			for(var i = 0; i < utxos.length; i++)  {
 				txnObj = utxos[i].toObject();
 				txnID = utxos[i].toObject().txid;
