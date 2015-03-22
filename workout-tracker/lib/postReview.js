@@ -59,9 +59,14 @@ Review.prototype.postReview = function(fromAddress, toAddress, fromPrivateKey, r
 			var amtInSatoshis;
 			var scriptPubKey;
 			var oIndex;
-			
-			var blockChaindata = '{"review":'+rating+',"rating":'+postReviewData+'}';
-			
+
+            var blockChaindataJson = {};
+            blockChaindataJson["review"] = postReviewData;
+            blockChaindataJson["rating"] = rating;
+
+            var blockChaindata = JSON.stringify(blockChaindataJson);
+
+
 			for(var i = 0; i < utxos.length; i++)  {
 				txnObj = utxos[i].toObject();
 				txnID = utxos[i].toObject().txid;
