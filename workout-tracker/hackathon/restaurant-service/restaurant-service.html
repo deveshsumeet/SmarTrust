@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
-<polymer-element name="restaurant-service" attributes="restaurants">
+<polymer-element name="restaurant-service" attributes="restaurants url">
   <template>
     <style>
     :host {
@@ -9,7 +9,7 @@
     </style>
     <core-ajax id="ajax"
       auto
-      url="../api/restaurants.json"
+      url="{{url}}"
       on-core-response="{{restaurantsLoaded}}"
       handleAs="json">
     </core-ajax>
@@ -21,7 +21,7 @@
     },
     restaurantsLoaded: function() {
       // Make a copy of the loaded data
-      this.restaurants = this.$.ajax.response.slice(0);
+      this.restaurants = this.$.ajax.response;
     }
   });
   </script>

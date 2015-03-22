@@ -119,8 +119,8 @@ paper-dropdown-menu{
 .separator{
   padding: 16px;
   font-size: 14px;
-  border-top: 1px solid #e0e0e0;
-  border-color: #07155A;
+  border-top: 2px solid #e0e0e0;
+  border-color: #04A641;
 }
 
 .reviewDialog{
@@ -137,10 +137,7 @@ core-field {
 }
 
 .label{
-  width: 80px;
-}
-.register{
-  width: 70%
+  margin: 10px;
 }
 
 .merchantRegistration{
@@ -191,5 +188,9 @@ core-item.core-selected {
 
 .message{
   font-size: 10px;
+}
+
+.resDetailsMainPage{
+  font-size: 14px;
 }
 

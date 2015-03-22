@@ -122,6 +122,14 @@
         document.querySelector('#toast3').show()
     };
 
+    template.registrationSuccessful = function(event, response){
+        document.querySelector('#toast1').show()
+    };
+
+    template.registrationFailed = function(event, response){
+        document.querySelector('#toast2').show()
+    };
+
     var restaurantId = "";
     var query = window.location.search.substring(1);
     var vars = query.split("&");

@@ -40,7 +40,7 @@
 					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Share your Experience</paper-icon-button>
 					<div flex></div>
 					<span class="bottom indent title">
-						SmarTrust
+						<core-icon icon="hardware:security"></core-icon> SmarTrust
 					</span>
 
 					<app-bar url="{{hostName}}restaurants"></app-bar>
@@ -48,7 +48,7 @@
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
 				<div class="content container" vertical>
-					<restaurant-list show="all" ></restaurant-list>
+					<restaurant-list url="{{hostName}}restaurants"></restaurant-list>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>

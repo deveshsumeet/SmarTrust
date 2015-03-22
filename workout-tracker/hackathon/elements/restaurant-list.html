@@ -3,7 +3,7 @@
 <link rel="import" href="restaurant-card.html">
 <link rel="import" href="gravatar-image.html">
 
-<polymer-element name="restaurant-list" attributes="show">
+<polymer-element name="restaurant-list" attributes="url">
   <template>
     <style>
       img {
@@ -54,22 +54,26 @@
 
     </style>
     <paper-shadow class="card" z="1" vertical layout>
-      <restaurant-service id="service" restaurants="{{restaurants}}"></restaurant-service>
+      <restaurant-service id="service" restaurants="{{restaurants}}" url="{{url}}"></restaurant-service>
       <div class="box-header" layout vertical center justified>
         <h3 data-anchor-id="core-input.attributes">Hospital Details</h3>
       </div>
       <div class="grid" horizontal center>
         <core-selector>
-          <template repeat="{{restaurant in restaurants}}">
+          <template repeat="{{restaurant in restaurants.restaurants}}">
             <div id="restaurantContainer" flex layout horizontal>
               <gravatar-image userId="deveshsumeet@gmail.com"></gravatar-image>
               <header layout vertical flex class>
                 <span layout horizontal center justified>
-                  <span class="name">{{restaurant.name}}</span>
+                  <span class="name">{{restaurant.restaurantName}}</span>
                 </span>
-                <span class="rating"><x-rating value="{{restaurant.rating}}" readonly></x-rating> Rating </span>
-                <span id="lastline" layout horizontal center justified>
-                  <span class="comment" flex=""><img src="{{restaurant.avatar}}" width="30" height="30"> {{restaurant.review}}</span>
+                <span class="resDetailsMainPage">
+                  <core-icon icon="communication:business" style="width: 18px; height: 18px"></core-icon>{{restaurant.street}}, {{restaurant.city}}, {{restaurant.state}} - {{restaurant.pincode}}</span>  
+                  <span class="resDetailsMainPage">
+                  <core-icon icon="communication:call" style="width: 18px; height: 18px"></core-icon>
+                  {{restaurant.contact}}
+                </span>  
+                <br>
                 </span>
               </header>
             </div>
