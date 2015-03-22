@@ -194,3 +194,39 @@ core-item.core-selected {
   font-size: 14px;
 }
 
+.categories{
+  background-color: #FFFFFF;
+  margin: 20px;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 16px;
+  border-radius: 2px;
+}
+
+.homeAdv{
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+  text-decoration: none;
+}
+
+.homeAdvLabel{
+  padding: 10px;
+  text-align: center;
+}
+
+.homeDiv{
+  background-color: #FFFFFF;
+}
+
+.homeAdvDivs{
+  text-decoration: none;
+  color: black;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.title{
+  font-size: 25px;
+}
+

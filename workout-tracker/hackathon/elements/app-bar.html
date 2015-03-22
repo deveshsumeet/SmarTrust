@@ -9,7 +9,7 @@
         <core-style ref="main"></core-style>
         <restaurantdetails-service id="service" restaurants="{{restaurants}}" url="{{url}}">
         </restaurantdetails-service>
-        <paper-input-decorator id="restautantList" label="Hospital Search..." flex>
+        <paper-input-decorator id="restautantList" label="Search..." flex>
             <input id="restaurantInput" list="restaurantSearch" is="core-input">
             <datalist id="restaurantSearch">
                 <template repeat="{{restaurant in restaurants.restaurants}}">

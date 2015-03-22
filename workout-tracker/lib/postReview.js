@@ -51,7 +51,6 @@ Review.prototype.postReview = function(fromAddress, toAddress, fromPrivateKey, r
 		if (err) {
 			throw new Error('Refund unsuccessfull. Issue fetching Unspent Merchant data from Address. ' + err);
 		} else {
-			console.log("utxos: " + utxos );
 			var txnID;
 			var amt;
 			var toAmt;

@@ -11,10 +11,8 @@
 		<link rel="import" href="elements/restaurant-list.html">
 		<link rel="import" href="elements/app-bar.html">
 	</head>
-<body fullbleed layout vertical unresolved>
-
+<body>
 	<template is="auto-binding">
-		<section >
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
 			<core-header-panel drawer mode="waterfall-tall">
 				<core-toolbar id="navheader">
@@ -40,18 +38,50 @@
 					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Share your Experience</paper-icon-button>
 					<div flex></div>
 					<span class="bottom indent title">
-						<core-icon icon="hardware:security"></core-icon> SmarTrust
+						<core-icon class="title" icon="hardware:security"></core-icon> SmarTrust
 					</span>
 
 					<app-bar url="{{hostName}}restaurants"></app-bar>
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant1}}"></paper-icon-button>
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
-				<div class="content container" vertical>
-					<restaurant-list url="{{hostName}}restaurants"></restaurant-list>
+				<div class="content homeDiv" horizontal center layout flex>
+					<a href="pages/hospital-details.html" class="homeAdvDivs" target="_self">
+						<paper-shadow class="categories" z="2">
+							<div class="chip-top" style="background:#f4db33;" hero-id="Tycho-Fragments-art">
+								<core-icon class="homeAdv" icon="maps:local-hospital"></core-icon>
+							</div>
+							<div class="homeAdvLabel">Hospitals</div>
+						</paper-shadow>
+					</a>	
+					<a href="" class="homeAdvDivs" target="_self">
+						<paper-shadow class="categories" z="2">
+							<div class="chip-top" style="background:#972ff8;" hero-id="Tycho-Fragments-art">
+								<core-icon class="homeAdv" icon="maps:local-restaurant"></core-icon>
+							</div>
+							<div class="homeAdvLabel">Restaurants</div>
+						</paper-shadow>
+					</a>
+					<a href="" class="homeAdvDivs" target="_self">
+						<paper-shadow class="categories" z="2">
+							<div class="chip-top" style="background:#7dd6fe;" hero-id="Tycho-Fragments-art">
+								<core-icon class="homeAdv" icon="social:school"></core-icon>
+							</div>
+							<div class="homeAdvLabel">Education</div>
+						</paper-shadow>
+					</a>
+					<a href="" class="homeAdvDivs" target="_self">
+						<paper-shadow class="categories" z="2">
+							<div class="chip-top" style="background:#dc3c84;" hero-id="Tycho-Fragments-art">
+								<core-icon class="homeAdv" icon="maps:local-shipping"></core-icon>
+							</div>
+							<div class="homeAdvLabel">Shipping</div>
+						</paper-shadow>
+					</a>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>
+	</template>
 		<script src="app.js"></script>
 	</body>
 </html>
