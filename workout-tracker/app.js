@@ -15,17 +15,7 @@ var transactions = require('./routes/transactions');
 var blockchain = require('./routes/blockchain');
 
 var mongoose = require('mongoose');
-var uriUtil = require('mongodb-uri');
-
-
-var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
-                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };       
-
-
-var mongodbUri = 'mongodb://heroku_app35106410:h0gkohgcauviotu3n662du25rc@ds053698.mongolab.com:53698/heroku_app35106410/review_details';
-var mongooseUri = uriUtil.formatMongoose(mongodbUri);
-
-mongoose.connect(mongooseUri, options);
+mongoose.connect('mongodb://localhost/review_details');
 
 var app = express();
 
@@ -36,15 +26,15 @@ app.set('view engine', 'jade');
 
 
 app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*");
-   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-   res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control");
-   if (req.method === 'OPTIONS') {
-    res.statusCode = 204;
-    return res.end();
-  } else {
-    return next();
-  }
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type,Cache-Control");
+    if (req.method === 'OPTIONS') {
+        res.statusCode = 204;
+        return res.end();
+    } else {
+        return next();
+    }
 });
 
 // uncomment after placing your favicon in /public
@@ -72,9 +62,9 @@ app.post('/reviews', blockchain.create);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -82,23 +72,23 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 
