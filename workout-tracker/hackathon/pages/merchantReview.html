@@ -42,7 +42,7 @@
 					
 				</form>
 				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="{{hostName}}transactions"
-				  body='restaurantId={{restaurantId}}&userId={{user.email}}&review={{comments}}&rating={{ratings}}' on-core-response="{{handleResponse}}" on-core-error="{{handleError}}">
+				  body='restaurantId={{restaurantId}}&restaurantName={{restaurantName}}&userId={{user.email}}&review={{comments}}&rating={{ratings}}' on-core-response="{{handleResponse}}" on-core-error="{{handleError}}">
 			    </core-ajax>
 	    	</paper-action-dialog>
 		</section>

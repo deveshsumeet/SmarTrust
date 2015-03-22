@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
       
 var restaurantSchema = new Schema({
     restaurantId : { type: String, required: true, trim: true, index: { unique: true } },
-    restaurantName : { type: String, required: true, trim: true, index: { unique: true } },
+    restaurantName : { type: String, required: true, trim: true },
     street : { type: String, required: true },
     city : { type: String, required: true },
     state : { type: String, required: true },
@@ -17,7 +17,7 @@ var transactionSchema = new Schema({
     transactionNumber : { type: String, required: true, trim: true, index: { unique: true } },
     transactionLink : { type: String, required: true },
     restaurantId : { type: String, required: true },
-    restaurantName : { type: String, trim: true, index: { unique: true } },
+    restaurantName : { type: String, trim: true },
     userId : { type: String, required: true },
     date_created : { type: Date, required: true, default: Date.now}
 });

@@ -74,10 +74,10 @@ exports.create = function (req, res) {
         userId = "anonymous";
     }
 
-    var fromAddress = merchantAddresskeys.merchant1;
-    var privateKey = merchantPrivatekeys.merchant1;
+    var fromAddress = merchantAddresskeys.merchant2;
+    var privateKey = merchantPrivatekeys.merchant2;
 
-    var toAddress = merchantAddresskeys.merchant2;
+    var toAddress = merchantAddresskeys.merchant1;
 
     reviewToBlockchain.postReview(fromAddress, toAddress, privateKey, rating, review, function (err, returnedTxId) {
         if (err) {
