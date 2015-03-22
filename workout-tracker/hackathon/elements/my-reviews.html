@@ -54,9 +54,9 @@
         <h3 data-anchor-id="core-input.attributes">My Experiences</h3>
       </div>
       <core-selector>
-        <template repeat="{{myreview in myreviews.transactions}}">
+        <template repeat="{{myreview in myreviews}}">
           <div id="myreviewContainer" flex layout horizontal>
-            <img id="restaurantAvatar" src="{{myreview.restaurantAvatar}}"/>
+            <gravatar-image userId="{{myreview.restaurantId}}" ></gravatar-image>
               <header layout vertical flex class>
                 <span layout horizontal center justified>
                   <span class="name">{{myreview.restaurantName}}</span>
@@ -64,7 +64,7 @@
                 </span>
                 <span class="rating"><x-rating value="{{myreview.rating}}" readonly></x-rating> Rating</span>
                 <span id="lastline" layout horizontal center justified>
-                  <span class="comment" flex="">{{myreview.comment}}</span>
+                  <span class="comment" flex="">{{myreview.review}}</span>
                 </span>
             </header>
         </div>
