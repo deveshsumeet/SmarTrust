@@ -81,16 +81,6 @@ exports.create = function (req, res) {
 
     var toAddress = merchantAddresskeys.merchant1;
 
-    console.log('************ ourAddress *************' + fromAddress);
-    console.log('************ privateKey *************' + privateKey);
-    console.log('************ toAddress *************' + toAddress);
-
-    console.log('************ ready to transmit-review *************' + restaurantId);
-    console.log('************ ready to transmit-review *************' + userId);
-    console.log('************ ready to transmit-review *************' + rating);
-    console.log('************ ready to transmit-ratings *************' + review);
-
-
     reviewToBlockchain.postReview(fromAddress, toAddress, privateKey, rating, review, function (err, returnedTxId) {
         if (err) {
             console.log("err" + err);

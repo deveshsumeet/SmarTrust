@@ -4,15 +4,16 @@
 		<meta name="viewport" 
   content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 		<!-- 1. Load platform support before any code that touches the DOM. -->
+		<title>SmarTrust - Reviews you can trust</title>
 		<script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
-		<title>SmarTrust - My Experiences</title>
 		<link rel="stylesheet" href="../app.css">
 		<link rel="import" href="../elements.html">
-		<link rel="import" href="../elements/my-reviews.html">
+		<link rel="import" href="../elements/restaurant-list.html">
 		<link rel="import" href="../elements/app-bar.html">
 	</head>
-<body fullbleed layout vertical unresolved>
+<body>
 	<template is="auto-binding">
+		<section >
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">
 			<core-header-panel drawer mode="waterfall-tall">
 				<core-toolbar id="navheader">
@@ -24,18 +25,18 @@
 						<span>{{user.email}}</span>
 					</div>
 				</core-toolbar>
-				<core-menu selected="1">
-					<core-item id="registerMerchantMenu" icon="add-box" label="Register Hospital" class="menu">
+				<core-menu>
+				    <core-item id="registerMerchantMenu" icon="add-box" label="Register Hospital" class="menu">
 				   		<a href="registerMerchant.html" target="_self"></a>
 			   		</core-item>
     				<core-item id="myReviewsMenu" icon="maps:rate-review" label="My Experience" class="hiddenMenu">
     					<a href="myReviews.html" target="_self"></a>
     				</core-item>
 				</core-menu>
-			</core-header-panel >
+			</core-header-panel>
 			<core-header-panel main mode="waterfall-tall">
 				<core-toolbar id="mainheader">
-					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
+					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Share your Experience</paper-icon-button>
 					<div flex></div>
 					<span class="bottom indent title">
 						<core-icon class="title" icon="hardware:security"></core-icon> SmarTrust
@@ -44,12 +45,11 @@
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant}}"></paper-icon-button>
 					<google-signin theme="dark" clientId="839071723321-oit24q880cgq3kgokatplpfkufspqkta.apps.googleusercontent.com" scopes="profile email" on-google-signin-success="{{onSigninSuccess}}" on-google-signin-failure="{{onSigninFailure}}" on-google-signed-out="{{onSignoutSuccess}}"></google-signin>
 				</core-toolbar>
-				<div class="content" layout horizontal center>
-					<my-reviews flex url="{{hostName}}transactions?userId={{user.currentUserId}}"></my-reviews>
+				<div class="content container" vertical>
+					<restaurant-list url="{{hostName}}restaurants"></restaurant-list>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>
-		</template>
 		<script src="../app.js"></script>
 	</body>
 </html>

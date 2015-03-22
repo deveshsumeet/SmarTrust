@@ -23,7 +23,7 @@
 	        			<img src="../images/writeReview.jpeg" width="170px" height="150px">
 			       		<header layout vertical flex>
 			       			<h1>{{restaurantName}}</h1>
-			       			<span class="reviewHeader">{{restaurantStreet}}, {{restaurantCity}}, {{restaurantState}} - {{restaurantPincode}}</span>
+			       			<span>{{restaurantStreet}}, {{restaurantCity}}, {{restaurantState}} - {{restaurantPincode}}</span>
 			       		</header>
 					</div>
 		       		<div class="separator"><i>Please add your experience below:</i></div>
@@ -71,7 +71,7 @@
 					<paper-icon-button id="navicon" icon="menu" core-drawer-toggle>Write a Review</paper-icon-button>
 					<div flex></div>
 					<span class="bottom indent title">
-						<core-icon icon="hardware:security"></core-icon> SmarTrust
+						<core-icon class="title" icon="hardware:security"></core-icon> SmarTrust
 					</span>
 					<app-bar url="{{hostName}}restaurants"></app-bar>
 					<paper-icon-button icon="search" role="button" on-tap="{{searchRestaurant}}"></paper-icon-button>
