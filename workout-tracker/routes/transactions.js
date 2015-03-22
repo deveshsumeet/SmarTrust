@@ -7,7 +7,7 @@ var BlockchainTransactions = require('./../lib/blockchaintrasactions.js');
 
 var merchantPrivatekeys = require('./../keys/MerchantPrivateKeys');
 var merchantPublickeys = require('./../keys/MerchantPublicKeys');
-var merchantAddresskeys = require('./../keys/MerchantPublicKeys');
+var merchantAddresskeys = require('./../keys/MerchantAddresskeys');
 var Networks = bitcore.Networks;
 
 var reviewToBlockchain = new Review('https://test-insight.bitpay.com', Networks.testnet);
@@ -70,11 +70,6 @@ exports.create = function (req, res) {
     if (userId == "undefined" || userId == "") {
         userId = "anonymous";
     }
-
-    console.log('************ ready to transmit-review *************' + restaurantId);
-    console.log('************ ready to transmit-review *************' + userId);
-    console.log('************ ready to transmit-review *************' + rating);
-    console.log('************ ready to transmit-ratings *************' + review);
 
     console.log(restaurantId);
     console.log(userId);
