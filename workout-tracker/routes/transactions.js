@@ -28,7 +28,7 @@ exports.index = function (req, res) {
     if (typeof userId != 'undefined') {
         findCriteria["userId"] = userId;
     }
-    Transaction.find(findCriteria).select('userId restaurantId restaurantName transactionNumber -_id').exec(function (err, docs) {
+    Transaction.find(findCriteria).select('userId restaurantId restaurantName transactionNumber fileHash -_id').exec(function (err, docs) {
         if (!err) {
 
             var reviews = [];
@@ -46,6 +46,9 @@ exports.index = function (req, res) {
 
                         if (typeof restaurantId != 'undefined') {
                             transactionData["userId"] = item.userId;
+                            if(item.fileHash) {
+                                transactionData["fileHash"] = item.fileHash;
+                            }
                         } else if (typeof userId != 'undefined') {
                             transactionData["restaurantId"] = item.restaurantId;
                             transactionData["restaurantName"] = item.restaurantName;
