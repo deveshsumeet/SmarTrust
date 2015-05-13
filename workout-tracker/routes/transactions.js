@@ -86,7 +86,7 @@ exports.create = function (req, res) {
 
     var fileHash = '';
     if (req.files) {
-        var files = req.files.userPhoto.path;
+        var files = req.files.reviewImage.path;
         var fileData = {};
         ipfs.add([files], function (err, resp) {
             if (err || !resp) {
