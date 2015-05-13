@@ -68,6 +68,22 @@ exports.index = function (req, res) {
 
 exports.create = function (req, res) {
 
+    var restaurantId = req.body.restaurantId;
+    var restaurantName = req.body.restaurantName;
+    var userId = req.body.userId;
+    var rating = req.body.rating;
+    var review = req.body.review;
+
+    if (!userId) {
+        userId = "anonymous";
+    }
+
+    var fromAddress = merchantAddresskeys.merchant1;
+    var privateKey = merchantPrivatekeys.merchant1;
+
+    var toAddress = merchantAddresskeys.merchant2;
+
+
     var fileHash = '';
     if (req.files) {
         var files = req.files.userPhoto.path;
@@ -82,27 +98,16 @@ exports.create = function (req, res) {
                 fileData = resp[i];
             }
             fileHash = fileData["Hash"];
+            postReview(fromAddress, toAddress, privateKey, rating, review, fileHash, restaurantId, restaurantName, userId, req, res);
         });
+    } else {
+        postReview(fromAddress, toAddress, privateKey, rating, review, fileHash, restaurantId, restaurantName, userId, req, res);
     }
+    console.log('**************  File hash before submitting the review is : ' + fileHash + '  **************');
 
+}
 
-    var restaurantId = req.body.restaurantId;
-    var restaurantName = req.body.restaurantName;
-    var userId = req.body.userId;
-    var rating = req.body.rating;
-    var review = req.body.review;
-
-    if (!userId) {
-        userId = "anonymous";
-    }
-
-    var fromAddress = merchantAddresskeys.merchant2;
-    var privateKey = merchantPrivatekeys.merchant2;
-
-    var toAddress = merchantAddresskeys.merchant1;
-
-    console.log('**************  File hash before submitting the review is : '+ fileHash +'  **************');
-
+function postReview(fromAddress, toAddress, privateKey, rating, review, fileHash, restaurantId, restaurantName, userId, req, res) {
     reviewToBlockchain.postReview(fromAddress, toAddress, privateKey, rating, review, fileHash, function (err, returnedTxId) {
         if (err) {
             console.log("err" + err);
@@ -126,6 +131,7 @@ exports.create = function (req, res) {
                         newTransaction.restaurantId = restaurantId;
                         newTransaction.restaurantName = restaurantName;
                         newTransaction.userId = userId;
+                        newTransaction.fileHash = fileHash;
 
                         newTransaction.save(function (err) {
 
@@ -156,4 +162,5 @@ exports.create = function (req, res) {
 
         }
     });
+
 }

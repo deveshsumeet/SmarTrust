@@ -61,7 +61,10 @@ Review.prototype.postReview = function (fromAddress, toAddress, fromPrivateKey, 
             var blockChaindataJson = {};
             blockChaindataJson["rating"] = rating;
             blockChaindataJson["review"] = postReviewData;
-            blockChaindataJson["fileHash"] = fileHash;
+            //if(fileHash)
+            //{
+            //    blockChaindataJson["fileHash"] = fileHash;
+            //}
 
             var blockChaindata = JSON.stringify(blockChaindataJson);
             console.log('blockChaindata : ' + blockChaindata);
