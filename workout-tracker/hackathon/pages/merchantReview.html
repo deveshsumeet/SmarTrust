@@ -18,7 +18,7 @@
 		<section>
 			<paper-fab class="writeReview bottom" icon="create" on-tap="{{ newReview }}" role="button"  tabindex="0" aria-label="launch" title="Write a review"></paper-fab>
 	        <paper-action-dialog backdrop class="reviewDialog" layered="false">
-	        	<form id="submitReview">
+	        	<form id="uploadForm" name="uploadForm" enctype="multipart/form-data" action="/transactions" method="post">
 	        		<div class="middle" layout horizontal flex center>
 	        			<img src="../images/writeReview.jpeg" width="170px" height="150px">
 			       		<header layout vertical flex>
@@ -28,22 +28,27 @@
 					</div>
 		       		<div class="separator"><i>Please add your experience below:</i></div>
 		        	<div>
-				      <span>Rating</span>
-				      <paper-slider id="ratings" pin snaps max="5" step="1" value="{{ratings}}" editable></paper-slider>
+				      <span class="reviewLabel">Rating</span>
+				      <paper-slider id="ratings" name="ratings" pin snaps max="5" step="1" value="{{ratings}}" editable></paper-slider>
+				    </div>
+				    <div>
+				    	<span class="reviewLabel">Rating</span>
+				    	<input id="reviewImage" type="file" name="reviewImage"/>
 				    </div>
 		        	<paper-input-decorator label="Comments" floatingLabel>
 				      <paper-autogrow-textarea>
-				        <textarea value="{{comments}}"></textarea>
+				        <textarea name="review" id="review" value="{{comments}}"></textarea>
 				      </paper-autogrow-textarea>
 				    </paper-input-decorator>
-
 					<paper-button raised affirmative onclick="document.querySelector('#toast1').show()">Cancel</paper-button>
 					<paper-button raised type="submit" on-tap="{{doSend}}" affirmative autofocus>Submit</paper-button>
-					
+					<input id="restaurantId" name="restaurantId" type="hidden" value="{{restaurantId}}"/>
+					<input id="restaurantName" name="restaurantName" type="hidden" value="{{restaurantName}}"/>
+					<input id="userId" name="userId" type="hidden" value="{{user.email}}"/>
 				</form>
-				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="{{hostName}}transactions"
-				  body='restaurantId={{restaurantId}}&restaurantName={{restaurantName}}&userId={{user.email}}&review={{comments}}&rating={{ratings}}' on-core-response="{{handleResponse}}" on-core-error="{{handleError}}">
-			    </core-ajax>
+<!-- 				<core-ajax id="submitReviewAjax" auto="false" method="POST" url="{{hostName}}transactions"
+				  body='ating={{ratings}}' on-core-response="{{handleResponse}}" on-core-error="{{handleError}}">
+			    </core-ajax> -->
 	    	</paper-action-dialog>
 		</section>
 		<core-drawer-panel id="drawerPanel" responsiveWidth="800px" touch-action selected="drawer">

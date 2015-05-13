@@ -110,8 +110,25 @@
     };
 
     template.doSend = function(event, detail, sender){
-        var coreAjax = document.querySelector('core-ajax');
-        coreAjax.go();
+        var templateObj = this;
+        var uploadForm = document.getElementById("uploadForm");
+        /* Create a FormData instance */
+        var formData = new FormData(uploadForm);
+        var oReq = new XMLHttpRequest();
+        oReq.open("post", "/transactions", true);
+        oReq.setRequestHeader("Content-Type", "multipart/form-data");
+        oReq.send(formData);  /* Send to server */ 
+
+        /* Check the response status */  
+        oReq.onreadystatechange = function() 
+        {
+            if (oReq.readyState == 4 && oReq.status == 200) 
+            {
+                templateObj.handleResponse();
+            } else {
+                templateObj.handleError();
+            }
+        }
     };
 
     template.handleResponse = function(event, response){
