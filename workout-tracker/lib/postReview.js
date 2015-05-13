@@ -38,7 +38,7 @@ function Review(url, network) {
     return this;
 }
 
-Review.prototype.postReview = function (fromAddress, toAddress, fromPrivateKey, rating, postReviewData, callback) {
+Review.prototype.postReview = function (fromAddress, toAddress, fromPrivateKey, rating, postReviewData, fileHash, callback) {
     if (!fromAddress || !toAddress || !fromPrivateKey || !postReviewData) {
         throw new Error('Some or All Input Parameters are missing. Parameters required are merchantAddress, userAddress, amount, merchantPrivateKey');
     }
@@ -59,10 +59,12 @@ Review.prototype.postReview = function (fromAddress, toAddress, fromPrivateKey, 
             var oIndex;
 
             var blockChaindataJson = {};
-            blockChaindataJson["review"] = postReviewData;
             blockChaindataJson["rating"] = rating;
+            blockChaindataJson["review"] = postReviewData;
+            blockChaindataJson["fileHash"] = fileHash;
 
             var blockChaindata = JSON.stringify(blockChaindataJson);
+            console.log('blockChaindata : ' + blockChaindata);
 
 
             for (var i = 0; i < utxos.length; i++) {

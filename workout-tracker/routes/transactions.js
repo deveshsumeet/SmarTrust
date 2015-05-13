@@ -1,6 +1,10 @@
+'use strict'
+
 var Transaction = require('../models/restaurant').Transaction;
 var bitcore = require('bitcore');
 var async = require('async');
+
+var ipfs = require('ipfs-api')('localhost', 5001);
 
 var Review = require('./../lib/postReview.js');
 var BlockchainTransactions = require('./../lib/blockchaintrasactions.js');
@@ -64,13 +68,31 @@ exports.index = function (req, res) {
 
 exports.create = function (req, res) {
 
+    var fileHash = '';
+    if (req.files) {
+        var files = req.files.userPhoto.path;
+        var fileData = {};
+        ipfs.add([files], function (err, resp) {
+            if (err || !resp) {
+                return console.log(err);
+            }
+
+            for (var i = 0; i < resp.length; i++) {
+                console.log(resp[i]);
+                fileData = resp[i];
+            }
+            fileHash = fileData["Hash"];
+        });
+    }
+
+
     var restaurantId = req.body.restaurantId;
     var restaurantName = req.body.restaurantName;
     var userId = req.body.userId;
     var rating = req.body.rating;
     var review = req.body.review;
 
-    if (userId == "undefined" || userId == "") {
+    if (!userId) {
         userId = "anonymous";
     }
 
@@ -79,7 +101,9 @@ exports.create = function (req, res) {
 
     var toAddress = merchantAddresskeys.merchant1;
 
-    reviewToBlockchain.postReview(fromAddress, toAddress, privateKey, rating, review, function (err, returnedTxId) {
+    console.log('**************  File hash before submitting the review is : '+ fileHash +'  **************');
+
+    reviewToBlockchain.postReview(fromAddress, toAddress, privateKey, rating, review, fileHash, function (err, returnedTxId) {
         if (err) {
             console.log("err" + err);
         } else {
@@ -129,7 +153,6 @@ exports.create = function (req, res) {
                         });
                     }
                 });
-
 
         }
     });
