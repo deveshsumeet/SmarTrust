@@ -114,21 +114,35 @@
         var uploadForm = document.getElementById("uploadForm");
         /* Create a FormData instance */
         var formData = new FormData(uploadForm);
-        var oReq = new XMLHttpRequest();
-        oReq.open("post", "/transactions", true);
-        oReq.setRequestHeader("Content-Type", "multipart/form-data");
-        oReq.send(formData);  /* Send to server */ 
+        // var oReq = new XMLHttpRequest();
+        // oReq.open("post", "/transactions", true);
+        // oReq.setRequestHeader("Content-Type", "multipart/form-data");
+        // oReq.send(formData);  /* Send to server */ 
 
-        /* Check the response status */  
-        oReq.onreadystatechange = function() 
-        {
-            if (oReq.readyState == 4 && oReq.status == 200) 
-            {
-                templateObj.handleResponse();
-            } else {
-                templateObj.handleError();
-            }
-        }
+        // /* Check the response status */  
+        // oReq.onreadystatechange = function() 
+        // {
+        //     if (oReq.readyState == 4 && oReq.status == 200) 
+        //     {
+        //         templateObj.handleResponse();
+        //     } else {
+        //         templateObj.handleError();
+        //     }
+        // }
+
+        $.ajax({
+          url: '/transactions',
+          data: formData,
+          processData: false,
+          contentType: false,
+          type: 'POST',
+          success: function(data){
+            templateObj.handleResponse();
+          },
+          error: function (data){
+            templateObj.handleError();
+          }
+        });
     };
 
     template.handleResponse = function(event, response){
