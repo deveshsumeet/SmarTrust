@@ -46,7 +46,7 @@ exports.index = function (req, res) {
 
                         if (typeof restaurantId != 'undefined') {
                             transactionData["userId"] = item.userId;
-                            if(item.fileHash) {
+                            if (item.fileHash) {
                                 transactionData["fileHash"] = item.fileHash;
                             }
                         } else if (typeof userId != 'undefined') {
@@ -89,22 +89,24 @@ exports.create = function (req, res) {
 
     var fileHash = '';
     if (req.files) {
-        var files = req.files.reviewImage.path;
-        var fileData = {};
-        ipfs.add([files], function (err, resp) {
-            if (err || !resp) {
-                return console.log(err);
-            }
+        if (req.files.reviewImage) {
+            var files = req.files.reviewImage.path;
+            var fileData = {};
+            ipfs.add([files], function (err, resp) {
+                if (err || !resp) {
+                    return console.log(err);
+                }
 
-            for (var i = 0; i < resp.length; i++) {
-                console.log(resp[i]);
-                fileData = resp[i];
-            }
-            fileHash = fileData["Hash"];
+                for (var i = 0; i < resp.length; i++) {
+                    console.log(resp[i]);
+                    fileData = resp[i];
+                }
+                fileHash = fileData["Hash"];
+                postReview(fromAddress, toAddress, privateKey, rating, review, fileHash, restaurantId, restaurantName, userId, req, res);
+            });
+        } else {
             postReview(fromAddress, toAddress, privateKey, rating, review, fileHash, restaurantId, restaurantName, userId, req, res);
-        });
-    } else {
-        postReview(fromAddress, toAddress, privateKey, rating, review, fileHash, restaurantId, restaurantName, userId, req, res);
+        }
     }
     console.log('**************  File hash before submitting the review is : ' + fileHash + '  **************');
 
