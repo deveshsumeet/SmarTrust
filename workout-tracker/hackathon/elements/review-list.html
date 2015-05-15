@@ -3,6 +3,8 @@
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-action-dialog.html">
 <link rel="import" href="../review-service/review-service.html">
+<link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.12/video.js"></script>
 <link rel="import" href="review-card.html">
 <link rel="import" href="gravatar-image.html">
 
@@ -120,6 +122,16 @@
                     <img src="http://gateway.ipfs.io/ipfs/{{review.fileHash}}" class="reviewImage"/>
                   </paper-action-dialog>
                 </core-tooltip>
+                <core-tooltip label="Click to show Video" class="fancy" position="left">
+                  <core-icon-button icon="av:video-collection" on-tap="{{showVideo}}"></core-icon-button>
+                  <paper-action-dialog backdrop class="showVideo" layered="false">
+                    <video id="example_video_1" class="video-js vjs-default-skin"
+				       controls preload="auto" width="640" height="264"
+				       data-setup='{"example_option":true}'>
+						<source src="http://gateway.ipfs.io/ipfs/QmQ15DpUh1tvhHhyWAkHzhRxiPuXEdBrt1svqmRME7vJA9" type='video/mp4' />
+					</video>
+                  </paper-action-dialog>
+                </core-tooltip>
                 <time>{{review.timestamp}}</time>
               </span>
               <span class="rating"><x-rating value="{{review.rating}}" readonly></x-rating> Rating </span>
@@ -135,6 +147,17 @@
   <script>
    Polymer({
     showImage : function(e) {
+        if (e.target.localName != 'core-icon-button') {
+            return;
+        }
+
+        var d = e.target.nextElementSibling;
+        if (!d) {
+            return;
+        }
+        d.toggle();
+    },
+    showVideo : function(e) {
         if (e.target.localName != 'core-icon-button') {
             return;
         }
