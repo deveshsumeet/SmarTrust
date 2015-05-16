@@ -43,6 +43,8 @@ MerchantUserReviews.prototype.getUserReviewsByMerchant = function (merchantAddre
                             var str = '';
                             for (var i = 0; i < hex.length; i += 2)
                                 str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+
+                            str = str.replace("/[^{}:,a-zA-Z ]/g", "");
                             console.log("converted script---->" + str);
 
                         }
@@ -75,20 +77,31 @@ MerchantUserReviews.prototype.getUserReviewByTransaction = function (txid, callb
         transUrl = transBlockChianUrl + txid;
         rest.get(transUrl).on('complete', function (data2) {
             console.log('	 Data Output 	');
-            for (var j = 0; j < data2.outputs.length; j++) {
-                var script = data2.outputs[j].script;
-                var script_type = data2.outputs[j].script_type;
-                console.log("script_type---->" + script_type);
-                if (script_type === "null-data") {
-                    var buffer = new Buffer(script);
-                    console.log("script inside......---->" + script);
-                    var hex = script.toString();//force conversion
-                    var str = '';
-                    for (var i = 4; i < hex.length; i += 2)
-                        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-                    console.log("converted script---->" + str);
-                    callback(null, str);
+            if (data2.outputs != undefined) {
+                for (var j = 0; j < data2.outputs.length; j++) {
+                    var script = data2.outputs[j].script;
+
+                    var script_type = data2.outputs[j].script_type;
+                    console.log("Before Conversion script_type---->" + script);
+                    if (script_type === "null-data") {
+                        /*var buffer = new Buffer(script);
+                         console.log("script inside......---->" + script);
+                         var hex = script.toString();//force conversion
+                         var str = '';
+                         for (var i = 6; i < hex.length; i += 2)
+                         str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));*/
+
+                        var hex = script;//force conversion
+                        var str = '';
+                        for (var i = 6; i < hex.length; i += 2)
+                            str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+                        str = str.replace(/[^{}:,"a-zA-Z0-9 ]/g, '');
+                        console.log("converted script---->" + str);
+                        callback(null, str);
+                    }
                 }
+            } else {
+                callback(null, "");
             }
 
         })
@@ -98,4 +111,3 @@ MerchantUserReviews.prototype.getUserReviewByTransaction = function (txid, callb
 
 module.exports = MerchantUserReviews;
 
- 

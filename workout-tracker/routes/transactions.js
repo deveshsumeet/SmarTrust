@@ -42,19 +42,23 @@ exports.index = function (req, res) {
                         console.log("err" + err);
                     } else {
 
-                        transactionData = JSON.parse(transactionData);
 
-                        if (typeof restaurantId != 'undefined') {
-                            transactionData["userId"] = item.userId;
-                            if (item.fileHash) {
-                                transactionData["fileHash"] = item.fileHash;
+                        if (transactionData != "") {
+                            transactionData = JSON.parse(transactionData);
+                            if (typeof restaurantId != 'undefined') {
+                                transactionData["userId"] = item.userId;
+                                if (item.fileHash) {
+                                    transactionData["fileHash"] = item.fileHash;
+                                }
+                            } else if (typeof userId != 'undefined') {
+                                transactionData["restaurantId"] = item.restaurantId;
+                                transactionData["restaurantName"] = item.restaurantName;
                             }
-                        } else if (typeof userId != 'undefined') {
-                            transactionData["restaurantId"] = item.restaurantId;
-                            transactionData["restaurantName"] = item.restaurantName;
+                            reviews.push(transactionData);
+                            callback();
+                        } else {
+                            callback();
                         }
-                        reviews.push(transactionData);
-                        callback();
                     }
                 });
             }, function () {
