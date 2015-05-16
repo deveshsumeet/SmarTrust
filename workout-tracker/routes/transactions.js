@@ -42,7 +42,7 @@ exports.index = function (req, res) {
                         console.log("err" + err);
                     } else {
 
-                        transactionData = eval("(" + transactionData + ")");
+                        transactionData = Json.parse(transactionData);
 
                         if (typeof restaurantId != 'undefined') {
                             transactionData["userId"] = item.userId;

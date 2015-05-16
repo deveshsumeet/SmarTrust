@@ -8,7 +8,7 @@ $(function() {
 
 $(document).ready(function(){
 $.ajax({
-    url: "/transactions?restaurantId=smartrust.01@gmail.com",
+    url: "/transactions?restaurantId=palto@test.com",
     type: "GET",
     dataType : "json",
     success: function( data ) {
